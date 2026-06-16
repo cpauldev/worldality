@@ -1,0 +1,96 @@
+---
+import {
+  cn,
+  codeTextVariants,
+  frameFooterVariants,
+  frameVariants,
+  tableBodyVariants,
+  tableCellVariants,
+  tableContainerVariants,
+  tableRowVariants,
+  tableVariants,
+} from "example-shared/ui";
+
+import DescriptionText from "./DescriptionText.astro";
+
+interface Props {
+  description: string;
+  id: string;
+  snippet: string;
+  title: string;
+}
+
+const { description, id, snippet, title } = Astro.props;
+const hasControls = Astro.slots.has("controls");
+
+function escapeHtml(value: string): string {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+const snippetHtml = `<code data-section-snippet data-wl-preserve-source="true" class="${cn(
+  codeTextVariants(),
+  "body-sm wl-code-source",
+)}">${escapeHtml(snippet)}</code>`;
+---
+
+<div
+  data-example-section={id}
+  class="grid gap-2 md:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] md:items-start md:gap-x-6"
+>
+  <div class="flex flex-col gap-1">
+    <div class="inline-flex items-center gap-2">
+      <div class="h5 text-foreground" data-section-title>{title}</div>
+      <slot name="title-badge" />
+    </div>
+    <DescriptionText
+      className="body-sm text-muted-foreground"
+      text={description}
+    />
+  </div>
+  <div
+    data-slot="frame"
+    class={cn(frameVariants(), "bg-secondary/80 space-y-0 overflow-hidden md:col-start-2")}
+  >
+    <div data-slot="table-container" class={cn(tableContainerVariants())}>
+      <table data-slot="table" class={cn(tableVariants())}>
+        <tbody data-slot="table-body" class={cn(tableBodyVariants())}>
+          <tr data-slot="table-row" class={cn(tableRowVariants())}>
+            <td
+              data-slot="table-cell"
+              set:html={snippetHtml}
+              class={cn(
+                tableCellVariants(),
+                "relative align-top overflow-hidden border-border wl-code-panel",
+              )}
+            />
+          </tr>
+          <tr data-slot="table-row" class={cn(tableRowVariants())}>
+            <td
+              data-section-result
+              data-slot="table-cell"
+              class={cn(tableCellVariants(), "align-top border-border wl-preview-panel")}
+            >
+              <slot />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    {
+      hasControls ? (
+        <div
+          data-section-controls
+          data-slot="frame-panel-footer"
+          class={cn(frameFooterVariants())}
+        >
+          <slot name="controls" />
+        </div>
+      ) : null
+    }
+  </div>
+</div>

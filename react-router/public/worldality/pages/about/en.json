@@ -1,0 +1,17 @@
+{
+  "info": {
+    "route": "about",
+    "locale": "en"
+  },
+  "translations": {
+    "2c7qxbjo8pwz6": "About",
+    "1tki8vvz0x58z": "Change language",
+    "0bg6ynb8i0pc9": "Currency",
+    "251it4j82a4o0": "Current time",
+    "3s8t1hpspxa3e": "Home",
+    "1f7howkhytpil": "List",
+    "2aflwc64hpklz": "Relative time",
+    "0hvhuhf9wob6v": "This page shows how {brand} loads translated content across routes.",
+    "1aphnfmjgma2j": "Toggle theme"
+  }
+}

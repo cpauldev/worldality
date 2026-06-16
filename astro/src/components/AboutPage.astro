@@ -1,0 +1,107 @@
+---
+import { createFormatter } from "worldality";
+import { getLocaleMetadata } from "worldality/server";
+import { getTranslations } from "worldality/server/astro";
+
+import AstroMark from "./AstroMark.astro";
+import Controls from "./Controls.astro";
+import Layout from "../layouts/Layout.astro";
+import { ASTRO_FRAMEWORK, ASTRO_IDS } from "../lib/page-state";
+
+const { locale, t } = await getTranslations(Astro);
+const localeData = getLocaleMetadata(locale);
+const format = createFormatter({ locale });
+---
+
+<Layout
+  title="Worldality - Astro Example"
+  description={ASTRO_FRAMEWORK.metaDescription}
+  keywords={ASTRO_FRAMEWORK.metaKeywords}
+  lang={locale}
+>
+  <div
+    id={ASTRO_IDS.root}
+    data-example-framework="astro"
+    dir={localeData.dir}
+    class="flex min-h-screen items-start bg-background font-sans antialiased"
+  >
+    <div class="mx-auto w-full max-w-4xl px-4 py-16">
+      <header class="mb-12 flex flex-col items-center gap-4 text-center">
+        <div class="flex flex-col items-center gap-2">
+          <img
+            src="/favicon.svg"
+            alt=""
+            class="size-11 shrink-0"
+            aria-hidden="true"
+          />
+          <h1 class="text-foreground">Worldality</h1>
+          <div class="inline-flex flex-wrap items-center justify-center gap-2">
+            <div
+              class="inline-flex min-h-10 min-w-40 items-center justify-center gap-2 px-4 body-lg whitespace-nowrap"
+              style={`background-color:${ASTRO_FRAMEWORK.pillBackground};color:${ASTRO_FRAMEWORK.pillForeground}`}
+            >
+              <AstroMark class="size-5" />
+              <p>{ASTRO_FRAMEWORK.label}</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="space-y-8">
+        <Controls activePage="about" locale={locale} t={t} />
+
+        <section class="w-full rounded-[calc(var(--radius-lg)+2px)] bg-secondary px-6 py-7 text-start">
+          <p class="body-lg text-secondary-foreground">
+            {t(
+              "This page shows how {brand} loads translated content across routes.",
+              { brand: "Worldality" },
+            )}
+          </p>
+          <div class="mt-6 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-lg bg-background/72 px-4 py-3">
+              <p class="body-sm font-medium text-muted-foreground">
+                {t("Currency")}
+              </p>
+              <p class="mt-1 text-foreground">
+                {format.number(1234.56, {
+                  style: "currency",
+                  currency: "USD",
+                })}
+              </p>
+            </div>
+            <div class="rounded-lg bg-background/72 px-4 py-3">
+              <p class="body-sm font-medium text-muted-foreground">
+                {t("Current time")}
+              </p>
+              <p class="mt-1 text-foreground">
+                {format.dateTime(new Date(), "medium")}
+              </p>
+            </div>
+            <div class="rounded-lg bg-background/72 px-4 py-3">
+              <p class="body-sm font-medium text-muted-foreground">
+                {t("Relative time")}
+              </p>
+              <p class="mt-1 text-foreground">{format.relativeTime(-90)}</p>
+            </div>
+            <div class="rounded-lg bg-background/72 px-4 py-3">
+              <p class="body-sm font-medium text-muted-foreground">
+                {t("List")}
+              </p>
+              <p class="mt-1 text-foreground">
+                {format.list(["Astro", "Vite", "Worldality"], {
+                  type: "conjunction",
+                })}
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    import { setupAstroExamplePage } from "../scripts/page-client";
+
+    setupAstroExamplePage();
+  </script>
+</Layout>

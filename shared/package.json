@@ -1,0 +1,74 @@
+{
+  "name": "example-shared",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "shiki": "^4.1.0",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss": "^4.3.0",
+    "worldality": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.15",
+    "react": "^19.2.6",
+    "solid-js": "^1.9.13",
+    "svelte": "^5.55.9",
+    "vue": "^3.5.34"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "solid-js": ">=1",
+    "svelte": ">=5",
+    "vue": ">=3"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "solid-js": {
+      "optional": true
+    },
+    "svelte": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    }
+  },
+  "exports": {
+    "./ui": "./src/ui/index.ts",
+    "./tailwind.css": "./src/styles/tailwind.css",
+    "./base.css": "./src/styles/base.css",
+    "./layout.css": "./src/styles/layout.css",
+    "./constants": "./src/logic/constants.ts",
+    "./theme": "./src/logic/theme.ts",
+    "./icu-handlers": "./src/logic/icu-handlers.ts",
+    "./format-handlers": "./src/logic/format-handlers.ts",
+    "./code-highlighting": "./src/logic/code-highlighting.ts",
+    "./studio": "./src/logic/studio.ts",
+    "./capability-cards": "./src/logic/capability-cards.ts",
+    "./assets/abstract-green-field-sky.png": "./src/assets/abstract-green-field-sky.png",
+    "./assets/abstract-violet-coral-petals.png": "./src/assets/abstract-violet-coral-petals.png",
+    "./non-framework/app": "./src/non-framework/app.ts",
+    "./non-framework/frameworks": "./src/non-framework/frameworks.ts",
+    "./react/useTheme": "./src/logic/react/useTheme.ts",
+    "./react/useWorldalityWidget": "./src/logic/react/useWorldalityWidget.ts",
+    "./react/useICUExamples": "./src/logic/react/useICUExamples.ts",
+    "./react/useFormatExamples": "./src/logic/react/useFormatExamples.ts",
+    "./vue/useTheme": "./src/logic/vue/useTheme.ts",
+    "./vue/useWorldalityWidget": "./src/logic/vue/useWorldalityWidget.ts",
+    "./vue/useICUExamples": "./src/logic/vue/useICUExamples.ts",
+    "./vue/useFormatExamples": "./src/logic/vue/useFormatExamples.ts",
+    "./solid/useTheme": "./src/logic/solid/useTheme.ts",
+    "./solid/useWorldalityWidget": "./src/logic/solid/useWorldalityWidget.ts",
+    "./solid/useICUExamples": "./src/logic/solid/useICUExamples.ts",
+    "./solid/useFormatExamples": "./src/logic/solid/useFormatExamples.ts",
+    "./svelte/theme.svelte": "./src/logic/svelte/theme.svelte.ts",
+    "./svelte/widget.svelte": "./src/logic/svelte/widget.svelte.ts",
+    "./svelte/icu.svelte": "./src/logic/svelte/icu.svelte.ts",
+    "./svelte/format.svelte": "./src/logic/svelte/format.svelte.ts"
+  }
+}

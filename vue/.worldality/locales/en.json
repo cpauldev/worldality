@@ -1,0 +1,25 @@
+{
+  "info": {
+    "locale": "en",
+    "tool": "Worldality",
+    "version": "0.1.0"
+  },
+  "translations": {
+    "0bg6ynb8i0pc9": "Currency",
+    "0hvhuhf9wob6v": "This page shows how {brand} loads translated content across routes.",
+    "1aphnfmjgma2j": "Toggle theme",
+    "1e56e76o9hbm1": "Error",
+    "1f7howkhytpil": "List",
+    "1fg9czd7f2bzi": "Ready to launch",
+    "1n5cko9mry8nj": "Unavailable",
+    "1tki8vvz0x58z": "Change language",
+    "23mz6hsfdq9fi": "Connected",
+    "251it4j82a4o0": "Current time",
+    "2aflwc64hpklz": "Relative time",
+    "2c7qxbjo8pwz6": "About",
+    "2kdh256rx08dn": "Starting...",
+    "3nrky4eyeczio": "Open {studio}",
+    "3s8t1hpspxa3e": "Home",
+    "3u6hvdwscqe13": "Checking..."
+  }
+}

@@ -1,0 +1,382 @@
+---
+import { Minus, Plus } from "@lucide/astro";
+import { buttonVariants, cn, inputVariants, labelVariants } from "example-shared/ui";
+import {
+  CURRENCY_OPTIONS,
+  DATE_PRESETS,
+  ICU_MESSAGES,
+  TIME_PRESETS,
+  getDateFromPreset,
+  getTimeFromPreset,
+} from "example-shared/constants";
+
+import type { AstroExampleState } from "../lib/page-state";
+import { ASTRO_IDS, GENDER_OPTIONS } from "../lib/page-state";
+import type { AstroServerHelpers } from "../lib/server-helpers";
+import ExampleBadge from "./ExampleBadge.astro";
+import ExampleCard from "./ExampleCard.astro";
+import ExampleSection from "./ExampleSection.astro";
+
+interface Props {
+  helpers: AstroServerHelpers;
+  state: AstroExampleState;
+}
+
+const { helpers, state } = Astro.props;
+const controlLabelClass = cn(labelVariants());
+const controlInputClass = cn(inputVariants(), "body-sm");
+
+function smallButtonClass(
+  variant: "outline" | "secondary",
+  className = "",
+): string {
+  return cn(buttonVariants({ variant, size: "sm" }), "body-sm", className);
+}
+---
+
+<ExampleCard title={helpers.translateText("ICU MessageFormat Examples")}>
+  <ExampleSection
+    id="icu-plural"
+    title={helpers.translateText("Plural")}
+    description={helpers.translateText(
+      "Selects a message branch using locale-specific plural rules. Exact matches like {exactZeroToken} are evaluated before plural categories, and the {hashToken} token is replaced with the number.",
+      { exactZeroToken: "=0", hashToken: "#" },
+    )}
+    snippet={`t('${ICU_MESSAGES.plural}', { count: ${state.pluralCount} })`}
+  >
+    <div class="body text-foreground">
+      {helpers.formatIcu(ICU_MESSAGES.plural, { count: state.pluralCount })}
+    </div>
+    <Fragment slot="controls">
+      <div class="space-y-2">
+        <div class="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            data-action="plural-dec"
+            class={smallButtonClass("outline")}
+            aria-label={helpers.translateText("Decrease count")}
+            disabled={state.pluralCount <= 0}
+          >
+            <Minus class="size-4" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            data-action="plural-inc"
+            class={smallButtonClass("outline")}
+            aria-label={helpers.translateText("Increase count")}
+          >
+            <Plus class="size-4" aria-hidden="true" />
+          </button>
+          <span id={ASTRO_IDS.pluralCount}>
+            <ExampleBadge text={`${helpers.translateText("Count")}: ${state.pluralCount}`} />
+          </span>
+        </div>
+      </div>
+    </Fragment>
+  </ExampleSection>
+
+  <ExampleSection
+    id="icu-select"
+    title={helpers.translateText("Select")}
+    description={helpers.translateText(
+      "Selects a message branch by exact string match. Unlike plural, select is not locale-sensitive and the same branches apply in every locale.",
+    )}
+    snippet={`t('${ICU_MESSAGES.select}', { gender: '${state.gender}' })`}
+  >
+    <div class="body text-foreground">
+      {helpers.formatIcu(ICU_MESSAGES.select, { gender: state.gender })}
+    </div>
+    <Fragment slot="controls">
+      <div class="space-y-2">
+        <div class="flex flex-wrap gap-2">
+          {
+            GENDER_OPTIONS.map((value) => (
+              <button
+                type="button"
+                data-action={`gender-${value}`}
+                class={smallButtonClass(
+                  state.gender === value ? "secondary" : "outline",
+                )}
+              >
+                {helpers.tGenderLabel(value)}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </Fragment>
+  </ExampleSection>
+
+  <ExampleSection
+    id="icu-selectordinal"
+    title={helpers.translateText("Selectordinal")}
+    description={helpers.translateText(
+      "Selects an ordinal form (1st, 2nd, 3rd...) using locale-specific ordinal plural rules. The {hashToken} token is replaced with the number.",
+      { hashToken: "#" },
+    )}
+    snippet={`t('${ICU_MESSAGES.selectordinal}', { rank: ${state.ordinalRank} })`}
+  >
+    <div class="body text-foreground">
+      {helpers.formatIcu(ICU_MESSAGES.selectordinal, { rank: state.ordinalRank })}
+    </div>
+    <Fragment slot="controls">
+      <div class="space-y-2">
+        <div class="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            data-action="ordinal-dec"
+            class={smallButtonClass("outline")}
+            aria-label={helpers.translateText("Decrease rank")}
+            disabled={state.ordinalRank <= 1}
+          >
+            <Minus class="size-4" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            data-action="ordinal-inc"
+            class={smallButtonClass("outline")}
+            aria-label={helpers.translateText("Increase rank")}
+          >
+            <Plus class="size-4" aria-hidden="true" />
+          </button>
+          <span id={ASTRO_IDS.ordinalRank}>
+            <ExampleBadge text={`${helpers.translateText("Rank")}: ${state.ordinalRank}`} />
+          </span>
+        </div>
+      </div>
+    </Fragment>
+  </ExampleSection>
+
+  <ExampleSection
+    id="icu-number"
+    title={helpers.translateText("Number")}
+    description={helpers.translateText(
+      "Formats a number with locale-default conventions including grouping separators and {decimalToken} characters using the bare number type.",
+      { decimalToken: "decimal" },
+    )}
+    snippet={`t('${ICU_MESSAGES.number}', { score: ${state.score} })`}
+  >
+    <div class="body text-foreground">
+      {helpers.formatIcu(ICU_MESSAGES.number, { score: state.score })}
+    </div>
+    <Fragment slot="controls">
+      <div class="space-y-2">
+        <label class={controlLabelClass} for={ASTRO_IDS.score}>
+          {helpers.translateText("Score")}
+        </label>
+        <input
+          id={ASTRO_IDS.score}
+          data-bind="score"
+          type="number"
+          inputmode="numeric"
+          value={state.score}
+          class={controlInputClass}
+        />
+      </div>
+    </Fragment>
+  </ExampleSection>
+
+  <ExampleSection
+    id="icu-currency"
+    title={helpers.translateText("Currency")}
+    description={helpers.translateText(
+      "Formats a number as {currencyToken} using a Unicode number skeleton. The skeleton selects {currencyToken} formatting rules and the {currencyToken} code.",
+      { currencyToken: "currency" },
+    )}
+    snippet={`t('Price: {price, number, :: currency/${state.currency}}', { price: ${state.price} })`}
+  >
+    <div class="body text-foreground">
+      {helpers.formatIcu(`Price: {price, number, :: currency/${state.currency}}`, {
+        price: state.price,
+      })}
+    </div>
+    <Fragment slot="controls">
+      <div class="space-y-2">
+        <div class="flex flex-wrap gap-2">
+          {
+            CURRENCY_OPTIONS.map((value) => (
+              <button
+                type="button"
+                data-action={`currency-${value}`}
+                class={smallButtonClass(
+                  state.currency === value ? "secondary" : "outline",
+                )}
+              >
+                {value}
+              </button>
+            ))
+          }
+        </div>
+        <div class="space-y-2">
+          <label class={controlLabelClass} for={ASTRO_IDS.price}>
+            {helpers.translateText("Price")}
+          </label>
+          <input
+            id={ASTRO_IDS.price}
+            data-bind="price"
+            type="number"
+            inputmode="numeric"
+            value={state.price}
+            class={controlInputClass}
+          />
+        </div>
+      </div>
+    </Fragment>
+  </ExampleSection>
+
+  <ExampleSection
+    id="icu-percent"
+    title={helpers.translateText("Percent")}
+    description={helpers.translateText(
+      "Formats a decimal fraction as a percentage. The input is multiplied by 100 and rendered with locale-specific {percentToken} formatting rules.",
+      { percentToken: "percent" },
+    )}
+    snippet={`t('${ICU_MESSAGES.percent}', { discount: ${state.discountRate} })`}
+  >
+    <div class="body text-foreground">
+      {helpers.formatIcu(ICU_MESSAGES.percent, { discount: state.discountRate })}
+    </div>
+    <Fragment slot="controls">
+      <div class="space-y-2">
+        <label class={controlLabelClass} for={ASTRO_IDS.discount}>
+          {helpers.translateText("Discount rate (0-1)")}
+        </label>
+        <input
+          id={ASTRO_IDS.discount}
+          data-bind="discountRate"
+          type="number"
+          inputmode="numeric"
+          step="0.01"
+          min="0"
+          max="1"
+          value={state.discountRate}
+          class={controlInputClass}
+        />
+      </div>
+    </Fragment>
+  </ExampleSection>
+
+  <ExampleSection
+    id="icu-date"
+    title={helpers.translateText("Date")}
+    description={helpers.translateText(
+      "Formats a Date object using the medium date style with abbreviated month name, day, and year.",
+    )}
+    snippet={`t('${ICU_MESSAGES.date}', { date: getDateFromPreset('${state.datePreset}') })`}
+  >
+    <div class="body text-foreground">
+      {helpers.formatIcu(ICU_MESSAGES.date, {
+        date: getDateFromPreset(state.datePreset),
+      })}
+    </div>
+    <Fragment slot="controls">
+      <div class="space-y-2">
+        <div class="flex flex-wrap gap-2">
+          {
+            DATE_PRESETS.map((value) => (
+              <button
+                type="button"
+                data-action={`date-${value}`}
+                class={smallButtonClass(
+                  state.datePreset === value ? "secondary" : "outline",
+                )}
+              >
+                {helpers.tDatePresetLabel(value)}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </Fragment>
+  </ExampleSection>
+
+  <ExampleSection
+    id="icu-time"
+    title={helpers.translateText("Time")}
+    description={helpers.translateText(
+      "Formats a Date object's time component using the short style with hours and minutes only.",
+    )}
+    snippet={`t('${ICU_MESSAGES.time}', { time: getTimeFromPreset('${state.timePreset}') })`}
+  >
+    <div class="body text-foreground">
+      {helpers.formatIcu(ICU_MESSAGES.time, {
+        time: getTimeFromPreset(state.timePreset),
+      })}
+    </div>
+    <Fragment slot="controls">
+      <div class="space-y-2">
+        <div class="flex flex-wrap gap-2">
+          {
+            TIME_PRESETS.map((value) => (
+              <button
+                type="button"
+                data-action={`time-${value}`}
+                class={smallButtonClass(
+                  state.timePreset === value ? "secondary" : "outline",
+                )}
+              >
+                {helpers.tTimePresetLabel(value)}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </Fragment>
+  </ExampleSection>
+
+  <ExampleSection
+    id="icu-combined"
+    title={helpers.translateText("Combined")}
+    description={helpers.translateText(
+      "Mixes plain {paramToken} interpolation and ICU plural in a single message.",
+      { paramToken: "{param}" },
+    )}
+    snippet={`t('${ICU_MESSAGES.combined}', { user: '${state.userName}', count: ${state.notificationCount} })`}
+  >
+    <div class="body text-foreground">
+      {helpers.formatIcu(ICU_MESSAGES.combined, {
+        user: state.userName,
+        count: state.notificationCount,
+      })}
+    </div>
+    <Fragment slot="controls">
+      <div class="space-y-2">
+        <div class="space-y-2">
+          <label class={controlLabelClass} for={ASTRO_IDS.userName}>
+            {helpers.translateText("User name")}
+          </label>
+          <input
+            id={ASTRO_IDS.userName}
+            data-bind="userName"
+            type="text"
+            value={state.userName}
+            placeholder={helpers.translateText("User name")}
+            class={controlInputClass}
+          />
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            data-action="notify-dec"
+            class={smallButtonClass("outline")}
+            aria-label={helpers.translateText("Decrease notifications")}
+            disabled={state.notificationCount <= 0}
+          >
+            <Minus class="size-4" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            data-action="notify-inc"
+            class={smallButtonClass("outline")}
+            aria-label={helpers.translateText("Increase notifications")}
+          >
+            <Plus class="size-4" aria-hidden="true" />
+          </button>
+          <span id={ASTRO_IDS.notificationCount}>
+            <ExampleBadge text={`${helpers.translateText("Count")}: ${state.notificationCount}`} />
+          </span>
+        </div>
+      </div>
+    </Fragment>
+  </ExampleSection>
+</ExampleCard>

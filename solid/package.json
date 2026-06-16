@@ -1,0 +1,25 @@
+{
+  "name": "example-solid-vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.0",
+    "postcss": "^8.5.15",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.14",
+    "vite-plugin-solid": "^2.11.12"
+  },
+  "dependencies": {
+    "example-shared": "workspace:*",
+    "lucide-solid": "^1.16.0",
+    "solid-js": "^1.9.13",
+    "worldality": "^0.1.0"
+  }
+}

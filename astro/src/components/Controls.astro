@@ -1,0 +1,89 @@
+---
+import { Moon } from "@lucide/astro";
+import { buttonVariants, cn } from "example-shared/ui";
+import { getLocaleMetadata } from "worldality/server";
+
+import { ASTRO_IDS } from "../lib/page-state";
+
+interface Props {
+  activePage: "index" | "about";
+  locale: string;
+  t: (text: string, params?: Record<string, string>) => string;
+}
+
+const { activePage, locale, t } = Astro.props;
+const locales = ["en", "ar", "ko"] as const;
+
+function localizedPath(targetLocale: string): string {
+  const pagePath = activePage === "about" ? "/about" : "/";
+  if (targetLocale === "en") return pagePath;
+  return activePage === "about" ? `/${targetLocale}/about` : `/${targetLocale}`;
+}
+---
+
+<div class="flex flex-wrap items-center justify-center gap-3">
+  <nav class="flex items-center gap-1 rounded-xl border border-border bg-background p-1">
+    <a
+      href={localizedPath(locale).replace(/\/about$/, "") || "/"}
+      class={cn(
+        buttonVariants({
+          variant: activePage === "index" ? "secondary" : "ghost",
+        }),
+        "gap-2 px-3",
+      )}
+      aria-current={activePage === "index" ? "page" : undefined}
+    >
+      <span>{t("Home")}</span>
+    </a>
+    <a
+      href={locale === "en" ? "/about" : `/${locale}/about`}
+      class={cn(
+        buttonVariants({
+          variant: activePage === "about" ? "secondary" : "ghost",
+        }),
+        "gap-2 px-3",
+      )}
+      aria-current={activePage === "about" ? "page" : undefined}
+    >
+      <span>{t("About")}</span>
+    </a>
+  </nav>
+  <div class="rounded-xl border border-border bg-background p-1">
+    <button
+      id={ASTRO_IDS.themeToggle}
+      type="button"
+      class={cn(buttonVariants({ variant: "ghost" }), "gap-2 px-3")}
+      aria-label={t("Toggle theme")}
+    >
+      <span id={ASTRO_IDS.themeIcon}>
+        <Moon class="size-4" aria-hidden="true" />
+      </span>
+      <span>{t("Toggle theme")}</span>
+    </button>
+  </div>
+  <div
+    class="flex flex-wrap items-center justify-center gap-1 rounded-xl border border-border bg-background p-1"
+    aria-label={t("Change language")}
+  >
+    {
+      locales.map((targetLocale) => {
+        const localeData = getLocaleMetadata(targetLocale);
+        return (
+          <button
+            type="button"
+            data-locale-href={localizedPath(targetLocale)}
+            class={cn(
+              buttonVariants({
+                variant: targetLocale === locale ? "secondary" : "ghost",
+              }),
+              "gap-2 px-3",
+            )}
+            aria-pressed={targetLocale === locale}
+          >
+            <bdi lang={targetLocale}>{localeData.nativeName}</bdi>
+          </button>
+        );
+      })
+    }
+  </div>
+</div>

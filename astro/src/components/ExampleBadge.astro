@@ -1,0 +1,20 @@
+---
+import { badgeVariants, cn, type BadgeVariant } from "example-shared/ui";
+
+interface Props {
+  className?: string;
+  text: string;
+  variant?: BadgeVariant;
+}
+
+const { className = "", text, variant = "outline" } = Astro.props;
+---
+
+<span
+  data-size="lg"
+  data-slot="badge"
+  data-variant={variant}
+  class={cn(badgeVariants({ size: "lg", variant }), className)}
+>
+  {text}
+</span>
