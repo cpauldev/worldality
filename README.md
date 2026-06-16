@@ -2,7 +2,7 @@
 
 Public examples and support hub for Worldality.
 
-Worldality is published on npm as `worldality`. These examples install the published package instead of linking to the private development monorepo.
+Worldality is published on npm as [`worldality`](https://www.npmjs.com/package/worldality). These examples install the published package instead of linking to the private development monorepo.
 
 ## Preview
 
@@ -10,7 +10,7 @@ Worldality is published on npm as `worldality`. These examples install the publi
 
 ![Worldality Studio](assets/worldality-studio.png)
 
-## Install
+## Install These Examples
 
 ```bash
 bun install
@@ -42,7 +42,24 @@ bun run build
 - `react-router`
 - `vanilla`
 
-The examples share common utilities through the local `example-shared` workspace package. Each app depends on `worldality@^0.1.0` from npm.
+Each example app depends on `worldality@^0.1.0` from npm.
+
+## Get Worldality
+
+Start the guided setup from your app's project root:
+
+```bash
+npx worldality
+```
+
+If you prefer to install the package first, run setup after installing it:
+
+```bash
+npm install worldality
+npx worldality setup
+```
+
+You can also use your package manager's equivalent install command, such as `bun add worldality`, `pnpm add worldality`, or `yarn add worldality`, then run `npx worldality setup`.
 
 ## Issues
 
