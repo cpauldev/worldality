@@ -4,6 +4,12 @@ Public examples and support hub for Worldality.
 
 Worldality is published on npm as `worldality`. These examples install the published package instead of linking to the private development monorepo.
 
+## Preview
+
+![Worldality Next.js example](assets/nextjs-example.png)
+
+![Worldality Studio](assets/worldality-studio.png)
+
 ## Install
 
 ```bash
