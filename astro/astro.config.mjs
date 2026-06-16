@@ -8,12 +8,4 @@ export default defineConfig({
   }),
   integrations: [worldalityStudio().astro()],
   output: "server",
-  vite: {
-    optimizeDeps: {
-      include: ["shiki"],
-    },
-    ssr: {
-      noExternal: ["shiki"],
-    },
-  },
 });
