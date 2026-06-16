@@ -7,15 +7,15 @@ Location: `examples/shared`
 
 ## Structure
 
-- `src/logic` - runtime/example logic utilities and framework hooks
-- `src/ui` - shared UI primitives (button, card, frame, tabs, badge, etc.)
-- `src/styles` - shared base/layout typography styles
+- `src/logic` - shared runtime utilities, theme helpers, Studio status helpers, and framework widget/theme adapters
+- `src/ui` - shared UI variants and DOM helpers (button, card, frame, tabs, badge, etc.)
+- `src/styles` - shared Tailwind, base, layout, and typography styles
 
 ## Common imports
 
 ```ts
-import { ICU_MESSAGES } from "example-shared/constants";
 import { buttonVariants, cn } from "example-shared/ui";
+import { WORLDALITY_CONFIG } from "example-shared/constants";
 ```
 
 ```css

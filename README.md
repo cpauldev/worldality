@@ -1,8 +1,8 @@
 # Worldality
 
-Public examples and support hub for Worldality.
+Framework examples and support hub for Worldality.
 
-Worldality is published on npm as [`worldality`](https://www.npmjs.com/package/worldality). These examples install the published package instead of linking to the private development monorepo.
+Worldality is published on npm as [`worldality`](https://www.npmjs.com/package/worldality).
 
 ## Preview
 
