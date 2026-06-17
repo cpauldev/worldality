@@ -1,9 +1,12 @@
+![Worldality banner](assets/worldality-banner.png)
+
 # Worldality
 
-Framework examples and support hub for Worldality.
+Make your website global with Worldality, a framework-agnostic internationalization platform for React, Next.js, Vue, Nuxt, Svelte, and more. Built for developers and enterprise businesses.
 
-Worldality is published on npm as [`worldality`](https://www.npmjs.com/package/worldality).
-Each example app depends on `worldality@^0.1.0` from npm.
+### [Worldality.com](https://worldality.com/)
+
+This repository is the public home for runnable Worldality examples and support discussions. Each example uses the published [`worldality`](https://www.npmjs.com/package/worldality) package from npm.
 
 ## Available Examples
 
