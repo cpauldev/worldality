@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "worldality-public",
+      "name": "worldality",
       "devDependencies": {
         "bun-types": "^1.3.14",
       },
