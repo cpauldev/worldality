@@ -10,19 +10,19 @@ This repository is the public home for runnable Worldality examples and support 
 
 ## Available Examples
 
-- `react`
-- `solid`
-- `vue`
-- `nextjs`
-- `nuxt`
-- `astro`
-- `sveltekit`
-- `react-router`
-- `vanilla`
+- `examples/react`
+- `examples/solid`
+- `examples/vue`
+- `examples/nextjs`
+- `examples/nuxt`
+- `examples/astro`
+- `examples/sveltekit`
+- `examples/react-router`
+- `examples/vanilla`
 
 ## Preview
 
-![Worldality Next.js example](assets/nextjs-example.png)
+![Worldality example](assets/example.png)
 
 ![Worldality Studio](assets/worldality-studio.png)
 
