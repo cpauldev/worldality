@@ -2,9 +2,13 @@
 
 # Worldality
 
-Make your website global with Worldality, a framework-agnostic internationalization platform for React, Next.js, Vue, Nuxt, Svelte, and more. Built for developers and enterprise businesses.
+Make your website global with Worldality, an internationalization platform built for developers and enterprise teams that turns digital products into global experiences, reaching audiences in over 120 languages with an experience that feels local.
 
-### [Worldality.com](https://worldality.com/)
+Worldality is framework-agnostic and made for custom-built websites and apps across React, Next.js, Vue, Nuxt, Svelte, and more. It combines live translation, language-based routing, translated page metadata, a language switcher, text detection, Worldality CLI, and Worldality Studio for browsing strings, translating content, and tracking locale progress.
+
+![Worldality Studio](assets/worldality-studio.png)
+
+### [Learn more at Worldality.com](https://worldality.com/)
 
 This repository is the public home for runnable Worldality examples and support discussions. Each example uses the published [`worldality`](https://www.npmjs.com/package/worldality) package from npm.
 
@@ -23,8 +27,6 @@ This repository is the public home for runnable Worldality examples and support 
 ## Preview
 
 ![Worldality example](assets/example.png)
-
-![Worldality Studio](assets/worldality-studio.png)
 
 ## Install
 
