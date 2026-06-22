@@ -1,0 +1,6 @@
+interface:
+  display_name: "Worldality"
+  short_description: "Integrate and replace existing i18n with Worldality"
+  icon_small: "./assets/worldality.png"
+  icon_large: "./assets/worldality.png"
+  default_prompt: "Use $worldality to integrate, replace an existing i18n setup, or validate Worldality in this project."
