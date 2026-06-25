@@ -19,6 +19,6 @@
   "dependencies": {
     "@lucide/astro": "^1.16.0",
     "example-shared": "workspace:*",
-    "worldality": "^0.1.1"
+    "worldality": "^0.1.3"
   }
 }
