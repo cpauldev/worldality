@@ -1,0 +1,236 @@
+---
+import {
+  ArrowUpRight,
+  Globe,
+  LoaderCircle,
+  Monitor,
+  Plus,
+  Puzzle,
+} from "@lucide/astro";
+import {
+  CAPABILITY_CTA_CLASS_NAME,
+  CAPABILITY_FOOTER_CLASS_NAME,
+  CAPABILITY_ICON_FRAME_CLASS_NAME,
+  CAPABILITY_IMAGE_CLASS_NAME,
+  CAPABILITY_IMAGE_WRAPPER_CLASS_NAME,
+  CAPABILITY_OVERLAY_CLASS_NAME,
+  CAPABILITY_TILE_CLASS_NAME,
+  CARD_ELEVATION_SHADOW_CLASS_NAME,
+  CARD_INSET_BORDER_OVERLAY_CLASS_NAME,
+  studioPreviewImage,
+  widgetPreviewImage,
+} from "example-shared/capability-cards";
+import {
+  getInitialStudioStatus,
+  getStudioStatusClassName,
+} from "example-shared/studio";
+import { cn } from "example-shared/ui";
+import { getLocaleMetadata } from "worldality/server";
+import { getTranslations } from "worldality/server/astro";
+
+import AstroMark from "./AstroMark.astro";
+import Controls from "./Controls.astro";
+import Layout from "../layouts/Layout.astro";
+import { ASTRO_FRAMEWORK, ASTRO_IDS } from "../lib/page-state";
+
+const { locale, t } = await getTranslations(Astro);
+const localeData = getLocaleMetadata(locale);
+const cardClassName = cn(
+  CAPABILITY_TILE_CLASS_NAME,
+  CARD_ELEVATION_SHADOW_CLASS_NAME,
+  CARD_INSET_BORDER_OVERLAY_CLASS_NAME,
+);
+const initialStudioStatus = getInitialStudioStatus();
+const WORLDALITY_STUDIO_LABEL = "Worldality Studio";
+const WORLDALITY_WIDGET_LABEL = "Worldality Widget";
+
+function translateStudioStatusLabel(label: string): string {
+  switch (label) {
+    case "Checking...":
+      return t("Checking...");
+    case "Connected":
+      return t("Connected");
+    case "Starting...":
+      return t("Starting...");
+    case "Error":
+      return t("Error");
+    case "Ready to launch":
+      return t("Ready to launch");
+    case "Unavailable":
+      return t("Unavailable");
+    default:
+      return label;
+  }
+}
+---
+
+<Layout
+  title="Worldality - Astro Example"
+  description={ASTRO_FRAMEWORK.metaDescription}
+  keywords={ASTRO_FRAMEWORK.metaKeywords}
+  lang={locale}
+>
+  <div
+    id={ASTRO_IDS.root}
+    data-example-framework="astro"
+    dir={localeData.dir}
+    class="flex min-h-screen items-start bg-background font-sans antialiased"
+  >
+    <div class="mx-auto w-full max-w-4xl px-4 py-16">
+      <header class="mb-12 flex flex-col items-center gap-4 text-center">
+        <div class="flex flex-col items-center gap-2">
+          <img
+            src="/favicon.svg"
+            alt=""
+            class="size-11 shrink-0"
+            aria-hidden="true"
+          />
+          <h1 class="text-foreground">Worldality</h1>
+          <div class="inline-flex flex-wrap items-center justify-center gap-2">
+            <div
+              class="inline-flex min-h-10 min-w-40 items-center justify-center gap-2 px-4 body-lg whitespace-nowrap"
+              style={`background-color:${ASTRO_FRAMEWORK.pillBackground};color:${ASTRO_FRAMEWORK.pillForeground}`}
+            >
+              <AstroMark class="size-5" />
+              <p>{ASTRO_FRAMEWORK.label}</p>
+            </div>
+            <div
+              class="inline-flex min-h-10 items-center justify-center gap-1.5 px-3.5 body-lg text-white whitespace-nowrap"
+              style="background: linear-gradient(135deg, #8f45ff 0%, #6096f1 100%)"
+              aria-hidden="true"
+            >
+              <Plus class="size-3.5 shrink-0" aria-hidden="true" />
+              <svg
+                class="size-4 shrink-0"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="currentColor"
+              >
+                <path
+                  d="M13.056 23.238a.57.57 0 0 1-1.02-.355v-5.202c0-.63-.512-1.143-1.144-1.143H5.148a.57.57 0 0 1-.464-.903l3.777-5.29c.54-.753 0-1.804-.93-1.804H.57a.574.574 0 0 1-.543-.746a.6.6 0 0 1 .08-.157L5.008.78a.57.57 0 0 1 .467-.24h14.589a.57.57 0 0 1 .466.903l-3.778 5.29c-.54.755 0 1.806.93 1.806h5.745c.238 0 .424.138.513.322a.56.56 0 0 1-.063.603z"
+                />
+              </svg>
+              <span>Vite</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="space-y-8">
+        <Controls activePage="index" locale={locale} t={t} />
+        <div class="grid gap-6 sm:grid-cols-2">
+          <a
+            href="/worldality"
+            target="_blank"
+            rel="noreferrer"
+            class={cardClassName}
+            aria-label={t("Open {studio}", {
+              studio: WORLDALITY_STUDIO_LABEL,
+            })}
+          >
+            <div class={CAPABILITY_IMAGE_WRAPPER_CLASS_NAME} aria-hidden="true">
+              <img src={studioPreviewImage.src} alt="" class={CAPABILITY_IMAGE_CLASS_NAME} />
+            </div>
+            <div class={CAPABILITY_OVERLAY_CLASS_NAME} aria-hidden="true" />
+            <div class="relative z-10 flex w-full flex-col items-center justify-center gap-4">
+              <div class={CAPABILITY_ICON_FRAME_CLASS_NAME}>
+                <Monitor class="text-blue-500" aria-hidden="true" />
+              </div>
+              <h4 class="text-white">
+                {WORLDALITY_STUDIO_LABEL}
+              </h4>
+              <div class={CAPABILITY_CTA_CLASS_NAME}>
+                {t("Open {studio}", { studio: "Studio" })}
+                <ArrowUpRight
+                  class={cn(
+                    "size-6",
+                    localeData.dir === "rtl" && "-scale-x-100",
+                  )}
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
+            <div class={CAPABILITY_FOOTER_CLASS_NAME}>
+              <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center body-sm">
+                <span
+                  id={ASTRO_IDS.studioStatus}
+                  class={cn(
+                    "inline-flex items-center gap-1 font-medium",
+                    getStudioStatusClassName(initialStudioStatus.tone),
+                  )}
+                >
+                  <LoaderCircle
+                    id={ASTRO_IDS.studioSpinner}
+                    class="size-3.5 animate-spin"
+                    hidden={!initialStudioStatus.isLoading}
+                    aria-hidden="true"
+                  />
+                  <span id={ASTRO_IDS.studioStatusLabel}>
+                    {translateStudioStatusLabel(initialStudioStatus.label)}
+                  </span>
+                </span>
+                <span
+                  id={ASTRO_IDS.studioUrlSeparator}
+                  class={cn(
+                    "text-white/48",
+                    !initialStudioStatus.urlLabel && "hidden",
+                  )}
+                  aria-hidden="true"
+                >
+                  /
+                </span>
+                <span
+                  id={ASTRO_IDS.studioUrl}
+                  class={cn(
+                    "text-white/72",
+                    !initialStudioStatus.urlLabel && "hidden",
+                  )}
+                >
+                  {initialStudioStatus.urlLabel}
+                </span>
+              </div>
+            </div>
+          </a>
+
+          <button
+            id={ASTRO_IDS.localeButton}
+            type="button"
+            data-locale-button
+            class={cardClassName}
+            aria-label={t("Change language")}
+          >
+            <div class={CAPABILITY_IMAGE_WRAPPER_CLASS_NAME} aria-hidden="true">
+              <img src={widgetPreviewImage.src} alt="" class={CAPABILITY_IMAGE_CLASS_NAME} />
+            </div>
+            <div class={CAPABILITY_OVERLAY_CLASS_NAME} aria-hidden="true" />
+            <div class="relative z-10 flex w-full flex-col items-center justify-center gap-4">
+              <div class={CAPABILITY_ICON_FRAME_CLASS_NAME}>
+                <Puzzle class="text-pink-500" aria-hidden="true" />
+              </div>
+              <h4 class="text-white">
+                {WORLDALITY_WIDGET_LABEL}
+              </h4>
+              <div class={CAPABILITY_CTA_CLASS_NAME}>
+                <Globe class="size-6" aria-hidden="true" />
+                <bdi class="locale-script" lang={localeData.code}>
+                  {localeData.nativeName}
+                </bdi>
+              </div>
+            </div>
+            <div class={CAPABILITY_FOOTER_CLASS_NAME}>
+              <div class="text-center body-sm font-medium text-white/72">
+                {t("Change language")}
+              </div>
+            </div>
+          </button>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    import { setupAstroExamplePage } from "../scripts/page-client";
+
+    setupAstroExamplePage();
+  </script>
+</Layout>

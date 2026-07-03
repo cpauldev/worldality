@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="500" cy="500" r="500" fill="#ff0044"/><g transform="translate(500 500) scale(1.5)" fill="none" stroke="#ffffff" stroke-width="36" stroke-linecap="round" stroke-linejoin="miter">
+  <path d="M 0 0 L 50 -28.867513 A 100 100 0 1 0 -50 -28.867513 L 0 0"/>
+  <path d="M 0 0 L 50 -28.867513 A 100 100 0 1 0 -50 -28.867513 L 0 0" transform="rotate(60)"/>
+  <path d="M 0 0 L 50 -28.867513 A 100 100 0 1 0 -50 -28.867513 L 0 0" transform="rotate(120)"/>
+  <path d="M 0 0 L 50 -28.867513 A 100 100 0 1 0 -50 -28.867513 L 0 0" transform="rotate(180)"/>
+  <path d="M 0 0 L 50 -28.867513 A 100 100 0 1 0 -50 -28.867513 L 0 0" transform="rotate(240)"/>
+  <path d="M 0 0 L 50 -28.867513 A 100 100 0 1 0 -50 -28.867513 L 0 0" transform="rotate(300)"/>
+</g></svg>

@@ -1,0 +1,71 @@
+---
+import '../styles/global.css';
+import {
+	generateWorldalityScript,
+	loadSSRTranslations,
+} from "worldality/server/astro";
+
+interface Props {
+	description?: string;
+	keywords?: string;
+	lang?: string;
+	title: string;
+}
+
+const {
+	description = "Astro example for Worldality",
+	keywords = "",
+	lang = "en",
+	title,
+} = Astro.props;
+const worldalityData = await loadSSRTranslations(Astro);
+const worldalityScript = generateWorldalityScript(worldalityData);
+const direction =
+	worldalityData.localeMetadata[worldalityData.currentLocale]?.dir ?? "ltr";
+---
+
+<!doctype html>
+<html lang={worldalityData.currentLocale || lang} dir={direction}>
+		<head>
+			<meta charset="UTF-8" />
+			<meta name="description" content={description} />
+			{keywords ? <meta name="keywords" content={keywords} /> : null}
+			<meta name="viewport" content="width=device-width" />
+			<meta name="theme-color" content="#ffffff" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link
+			rel="preload"
+			href="/fonts/inter-variable.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			href="/fonts/inter-variable-italic.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			href="/fonts/geist-mono-variable.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			href="/fonts/inter-variable.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+			/>
+			<meta name="generator" content={Astro.generator} />
+			<script is:inline set:html={worldalityScript}></script>
+			<title>{title}</title>
+		</head>
+		<body>
+			<slot />
+		</body>
+</html>

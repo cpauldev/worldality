@@ -1,0 +1,23 @@
+{
+  "info": {
+    "route": "about",
+    "locale": "en"
+  },
+  "translations": {
+    "2c7qxbjo8pwz6": "About",
+    "1tki8vvz0x58z": "Change language",
+    "3u6hvdwscqe13": "Checking...",
+    "23mz6hsfdq9fi": "Connected",
+    "0bg6ynb8i0pc9": "Currency",
+    "251it4j82a4o0": "Current time",
+    "1e56e76o9hbm1": "Error",
+    "3s8t1hpspxa3e": "Home",
+    "1f7howkhytpil": "List",
+    "1fg9czd7f2bzi": "Ready to launch",
+    "2aflwc64hpklz": "Relative time",
+    "2kdh256rx08dn": "Starting...",
+    "0hvhuhf9wob6v": "This page shows how {brand} loads translated content across routes.",
+    "1aphnfmjgma2j": "Toggle theme",
+    "1n5cko9mry8nj": "Unavailable"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "worldality-public",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "packageManager": "bun@1.3.14",
+  "workspaces": [
+    "shared",
+    "react",
+    "solid",
+    "vue",
+    "nextjs",
+    "nuxt",
+    "astro",
+    "sveltekit",
+    "react-router",
+    "vanilla"
+  ],
+  "scripts": {
+    "build": "bun run --filter './*' build",
+    "dev:astro": "bun --cwd astro dev",
+    "dev:nextjs": "bun --cwd nextjs dev",
+    "dev:nuxt": "bun --cwd nuxt dev",
+    "dev:react": "bun --cwd react dev",
+    "dev:react-router": "bun --cwd react-router dev",
+    "dev:solid": "bun --cwd solid dev",
+    "dev:sveltekit": "bun --cwd sveltekit dev",
+    "dev:vanilla": "bun --cwd vanilla dev",
+    "dev:vue": "bun --cwd vue dev"
+  }
+}

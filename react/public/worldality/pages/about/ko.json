@@ -1,0 +1,17 @@
+{
+  "info": {
+    "route": "about",
+    "locale": "ko"
+  },
+  "translations": {
+    "1f7howkhytpil": "목록",
+    "2aflwc64hpklz": "상대 시간",
+    "2c7qxbjo8pwz6": "소개",
+    "1tki8vvz0x58z": "언어 변경",
+    "0hvhuhf9wob6v": "이 페이지에서는 {brand}가 여러 경로에서 번역된 콘텐츠를 불러오는 방식을 설명합니다.",
+    "1aphnfmjgma2j": "테마 전환",
+    "0bg6ynb8i0pc9": "통화",
+    "251it4j82a4o0": "현재 시간",
+    "3s8t1hpspxa3e": "홈"
+  }
+}

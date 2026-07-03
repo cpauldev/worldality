@@ -1,0 +1,351 @@
+/* ── Font faces ─────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter-variable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter-variable-italic.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/fonts/geist-mono-variable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans Arabic";
+  src: url("/fonts/noto-sans-arabic-variable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans Devanagari";
+  src: url("/fonts/noto-sans-devanagari-variable.woff2")
+    format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans Gurmukhi";
+  src: url("/fonts/noto-sans-gurmukhi-variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans Malayalam";
+  src: url("/fonts/noto-sans-malayalam-variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  src: url("/fonts/noto-sans-kr-variable.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans SC";
+  src: url("/fonts/noto-sans-sc-variable.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── CSS variables ──────────────────────────────────────────────────────────── */
+
+:root {
+  --font-sans:
+    "Inter", "Noto Sans Arabic", "Noto Sans Devanagari", "Noto Sans Gurmukhi",
+    "Noto Sans Malayalam", "Noto Sans KR", "Noto Sans SC", system-ui, sans-serif;
+  --font-mono: "Geist Mono", monospace;
+  --font-heading:
+    "Inter", "Noto Sans Arabic", "Noto Sans Devanagari", "Noto Sans Gurmukhi",
+    "Noto Sans Malayalam", "Noto Sans KR", "Noto Sans SC", system-ui, sans-serif;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+
+  --background: rgb(255 255 255);
+  --foreground: oklch(0.141 0.005 285.823);
+  --card: rgb(255 255 255);
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.705 0.015 286.067);
+  --primary: oklch(0.21 0.006 285.885);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: #b91c1c;
+  --info: #3b82f6;
+  --info-foreground: #1d4ed8;
+  --success: #10b981;
+  --success-foreground: #047857;
+  --warning: #f59e0b;
+  --warning-foreground: #b45309;
+  --muted-foreground: oklch(0.552 0.016 285.938);
+}
+
+.dark {
+  --background: oklch(0.051 0.005 285.823);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.12 0.006 285.885);
+  --card-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.552 0.016 285.938);
+  --primary: oklch(0.92 0.004 286.32);
+  --primary-foreground: oklch(0.12 0.006 285.885);
+  --secondary: oklch(0.184 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --accent: rgb(255 255 255 / 0.0588);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: #f87171;
+  --info: #3b82f6;
+  --info-foreground: #60a5fa;
+  --success: #10b981;
+  --success-foreground: #34d399;
+  --warning: #f59e0b;
+  --warning-foreground: #fbbf24;
+  --muted-foreground: oklch(0.705 0.015 286.067);
+}
+
+/* ── Base ───────────────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root[data-theme-switching],
+:root[data-theme-switching] *,
+:root[data-theme-switching] *::before,
+:root[data-theme-switching] *::after {
+  transition-duration: 0ms !important;
+  transition-delay: 0ms !important;
+  animation-duration: 0ms !important;
+  animation-delay: 0ms !important;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv11", "cv13";
+  font-variation-settings: "opsz" 24;
+}
+
+.locale-script {
+  --font-locale-override: "Inter";
+  font-family:
+    var(--font-locale-override), "Inter", "Noto Sans Arabic",
+    "Noto Sans Devanagari", "Noto Sans Gurmukhi", "Noto Sans Malayalam",
+    "Noto Sans KR", "Noto Sans SC", system-ui, sans-serif;
+}
+
+.locale-script:lang(ar) {
+  --font-locale-override: "Noto Sans Arabic";
+}
+
+.locale-script:lang(hi) {
+  --font-locale-override: "Noto Sans Devanagari";
+}
+
+.locale-script:lang(ko) {
+  --font-locale-override: "Noto Sans KR";
+}
+
+.locale-script:lang(ml) {
+  --font-locale-override: "Noto Sans Malayalam";
+}
+
+.locale-script:lang(pa) {
+  --font-locale-override: "Noto Sans Gurmukhi";
+}
+
+.locale-script:lang(zh),
+.locale-script:lang(zh-hans) {
+  --font-locale-override: "Noto Sans SC";
+}
+
+/* ── Typography ─────────────────────────────────────────────────────────────── */
+
+h1,
+.h1 {
+  font-family: var(--font-sans), "Inter", sans-serif;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  margin: 0;
+}
+
+h2,
+.h2 {
+  font-family: var(--font-sans), "Inter", sans-serif;
+  font-size: 32px;
+  line-height: 1.25;
+  letter-spacing: -0.75px;
+  font-weight: 700;
+  margin: 0;
+}
+
+h3,
+.h3 {
+  font-family: var(--font-sans), "Inter", sans-serif;
+  font-size: 24px;
+  line-height: 1.25;
+  letter-spacing: -0.625px;
+  font-weight: 700;
+  margin: 0;
+}
+
+h4,
+.h4 {
+  font-family: var(--font-sans), "Inter", sans-serif;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: -0.125px;
+  font-weight: 700;
+  margin: 0;
+}
+
+h5,
+.h5 {
+  font-family: var(--font-sans), "Inter", sans-serif;
+  font-size: 18px;
+  line-height: 1.556;
+  letter-spacing: -0.125px;
+  font-weight: 600;
+  margin: 0;
+}
+
+h6,
+.h6 {
+  font-family: var(--font-sans), "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  font-weight: 600;
+  margin: 0;
+}
+
+@media (min-width: 840px) {
+  h1,
+  .h1 {
+    font-size: 52px;
+  }
+  h2,
+  .h2 {
+    font-size: 42px;
+    line-height: 1.143;
+    letter-spacing: -1.5px;
+  }
+  h3,
+  .h3 {
+    font-size: 26px;
+    line-height: 1.231;
+    letter-spacing: -0.625px;
+  }
+  h4,
+  .h4 {
+    font-size: 22px;
+    line-height: 1.273;
+    letter-spacing: -0.25px;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1,
+  .h1 {
+    font-size: 64px;
+  }
+  h2,
+  .h2 {
+    font-size: 54px;
+    line-height: 1.037;
+    letter-spacing: -1.875px;
+  }
+  h3,
+  .h3 {
+    font-size: 32px;
+    line-height: 1.25;
+    letter-spacing: -0.75px;
+  }
+  h4,
+  .h4 {
+    font-size: 26px;
+    line-height: 1.231;
+    letter-spacing: -0.625px;
+  }
+  h5,
+  .h5 {
+    font-size: 22px;
+    line-height: 1.273;
+    letter-spacing: -0.25px;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+.body {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+}
+
+.body-lg {
+  font-size: 1rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+}
+
+.body-sm {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+}
+
+.body-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+}
+
+code {
+  font-family: var(--font-mono);
+}

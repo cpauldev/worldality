@@ -1,0 +1,26 @@
+{
+  "locales": {
+    "en": {
+      "name": "English",
+      "nativeName": "English",
+      "dir": "ltr"
+    },
+    "ar": {
+      "name": "Arabic",
+      "nativeName": "العربية",
+      "dir": "rtl"
+    },
+    "ko": {
+      "name": "Korean",
+      "nativeName": "한국어",
+      "dir": "ltr"
+    }
+  },
+  "defaultLocale": "en",
+  "output": "worldality",
+  "routing": true,
+  "routes": {
+    "about": {},
+    "index": {}
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "scan": "src",
+  "output": "public/worldality",
+  "manifest": "public",
+  "locales": {
+    "en": {
+      "name": "English",
+      "nativeName": "English",
+      "dir": "ltr"
+    },
+    "ar": {
+      "name": "Arabic",
+      "nativeName": "العربية",
+      "dir": "rtl"
+    },
+    "ko": {
+      "name": "Korean",
+      "nativeName": "한국어",
+      "dir": "ltr"
+    }
+  },
+  "defaultLocale": "en",
+  "extensions": [".ts", ".tsx", ".js", ".jsx"],
+  "exclude": [
+    "node_modules",
+    ".git",
+    "dist",
+    "build",
+    "out",
+    ".next",
+    ".turbo",
+    ".cache",
+    ".vercel",
+    ".netlify",
+    "coverage",
+    "__tests__",
+    "test",
+    "tests"
+  ],
+  "content": {
+    "pages": []
+  },
+  "pagePatterns": ["src/pages/**/*.tsx", "src/pages/**/*.jsx"],
+  "routing": true,
+  "framework": "react"
+}

@@ -1,0 +1,19 @@
+{
+  "info": {
+    "route": "index",
+    "locale": "ko"
+  },
+  "translations": {
+    "1n5cko9mry8nj": "사용 불가",
+    "2c7qxbjo8pwz6": "소개",
+    "2kdh256rx08dn": "시작 중...",
+    "1tki8vvz0x58z": "언어 변경",
+    "23mz6hsfdq9fi": "연결됨",
+    "3nrky4eyeczio": "열기 {studio}",
+    "1e56e76o9hbm1": "오류",
+    "1fg9czd7f2bzi": "출시 준비 완료",
+    "1aphnfmjgma2j": "테마 전환",
+    "3s8t1hpspxa3e": "홈",
+    "3u6hvdwscqe13": "확인 중…"
+  }
+}

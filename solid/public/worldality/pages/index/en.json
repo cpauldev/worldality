@@ -1,0 +1,19 @@
+{
+  "info": {
+    "route": "index",
+    "locale": "en"
+  },
+  "translations": {
+    "2c7qxbjo8pwz6": "About",
+    "1tki8vvz0x58z": "Change language",
+    "3u6hvdwscqe13": "Checking...",
+    "23mz6hsfdq9fi": "Connected",
+    "1e56e76o9hbm1": "Error",
+    "3s8t1hpspxa3e": "Home",
+    "3nrky4eyeczio": "Open {studio}",
+    "1fg9czd7f2bzi": "Ready to launch",
+    "2kdh256rx08dn": "Starting...",
+    "1aphnfmjgma2j": "Toggle theme",
+    "1n5cko9mry8nj": "Unavailable"
+  }
+}

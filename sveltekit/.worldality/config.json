@@ -1,0 +1,46 @@
+{
+  "scan": "src",
+  "output": "static/worldality",
+  "manifest": "static",
+  "locales": {
+    "en": {
+      "name": "English",
+      "nativeName": "English",
+      "dir": "ltr"
+    },
+    "ar": {
+      "name": "Arabic",
+      "nativeName": "العربية",
+      "dir": "rtl"
+    },
+    "ko": {
+      "name": "Korean",
+      "nativeName": "한국어",
+      "dir": "ltr"
+    }
+  },
+  "defaultLocale": "en",
+  "extensions": [".ts", ".js", ".svelte"],
+  "exclude": [
+    "node_modules",
+    ".git",
+    "dist",
+    "build",
+    "out",
+    ".next",
+    ".turbo",
+    ".cache",
+    ".vercel",
+    ".netlify",
+    "coverage",
+    "__tests__",
+    "test",
+    "tests"
+  ],
+  "content": {
+    "pages": []
+  },
+  "pagePatterns": ["**/+page.svelte"],
+  "routing": true,
+  "framework": "sveltekit"
+}

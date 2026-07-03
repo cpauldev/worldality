@@ -1,0 +1,4 @@
+@import "example-shared/tailwind.css";
+
+@source ".";
+@source "../shared/src";
