@@ -5,7 +5,7 @@ import {
   getStudioStatusClassName,
 } from "example-shared/studio";
 import { applyTheme, getInitialTheme, toggleTheme } from "example-shared/theme";
-import { getCurrentLocale, t, useLocaleRouting } from "worldality/astro";
+import { t, useLocaleRouting } from "worldality/astro";
 import { WorldalityWidget } from "worldality/widget";
 
 import { ASTRO_IDS } from "../lib/page-state";

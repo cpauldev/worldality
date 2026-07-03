@@ -1,6 +1,7 @@
+import type { loader as homeLoader } from "./home.server";
+
 import { Home } from "../components/Home";
 import { Layout } from "../components/Layout";
-import type { loader as homeLoader } from "./home.server";
 
 export { loader } from "./home.server";
 

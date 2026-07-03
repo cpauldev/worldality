@@ -5,6 +5,7 @@
  * Returns a setter for the button ref.
  */
 import { type Accessor, createEffect, onCleanup, onMount } from "solid-js";
+
 import { WorldalityWidget } from "worldality/widget";
 
 import { type Theme, WORLDALITY_CONFIG } from "../constants";

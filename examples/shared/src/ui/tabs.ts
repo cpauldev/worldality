@@ -35,16 +35,16 @@ const tabsListVariants = cva(
     },
     variants: {
       variant: {
-        default: "rounded-lg bg-muted p-0.5 text-muted-foreground/72 gap-0.5",
+        default: "bg-muted gap-0.5 rounded-lg p-0.5 text-muted-foreground/72",
         underline:
-          "data-[orientation=vertical]:px-1 data-[orientation=horizontal]:py-1 *:data-[slot=tabs-trigger]:hover:bg-accent",
+          "data-[orientation=horizontal]:py-1 data-[orientation=vertical]:px-1 *:data-[slot=tabs-trigger]:hover:bg-accent",
       },
     },
   },
 );
 
 const tabsIndicatorVariants = cva(
-  "absolute h-(--active-tab-height) w-(--active-tab-width) transition-[width,bottom,left,right] duration-200 ease-in-out ltr:left-(--active-tab-left) rtl:right-(--active-tab-right) bottom-(--active-tab-bottom)",
+  "absolute bottom-(--active-tab-bottom) h-(--active-tab-height) w-(--active-tab-width) transition-[width,bottom,left,right] duration-200 ease-in-out ltr:left-(--active-tab-left) rtl:right-(--active-tab-right)",
   {
     defaultVariants: {
       variant: "default",
@@ -60,7 +60,7 @@ const tabsIndicatorVariants = cva(
 );
 
 const tabsTriggerVariants = cva(
-  "[&_svg]:-mx-0.5 flex shrink-0 grow cursor-pointer items-center justify-center whitespace-nowrap rounded-md border border-transparent font-medium text-base outline-none transition-[color,background-color,box-shadow] focus-visible:ring-2 focus-visible:ring-ring data-disabled:pointer-events-none data-disabled:opacity-64 sm:text-sm [&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0 hover:text-muted-foreground data-active:text-foreground h-9 gap-1.5 px-[calc(--spacing(2.5)-1px)] sm:h-8 data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",
+  "flex h-9 shrink-0 grow cursor-pointer items-center justify-center gap-1.5 rounded-md border border-transparent px-[calc(--spacing(2.5)-1px)] text-base font-medium whitespace-nowrap transition-[color,background-color,box-shadow] outline-none hover:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring data-active:text-foreground data-disabled:pointer-events-none data-disabled:opacity-64 data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start sm:h-8 sm:text-sm [&_svg]:pointer-events-none [&_svg]:-mx-0.5 [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4",
 );
 
 const tabsPanelVariants = cva("flex-1 outline-none");

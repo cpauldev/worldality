@@ -4,7 +4,8 @@
  * Handles widget initialization, theme updates, and cleanup.
  * Returns a ref to attach to the locale button.
  */
-import { type Ref, onMounted, onUnmounted, ref, watch } from "vue";
+import { onMounted, onUnmounted, type Ref, ref, watch } from "vue";
+
 import { WorldalityWidget } from "worldality/widget";
 
 import { type Theme, WORLDALITY_CONFIG } from "../constants";

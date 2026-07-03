@@ -1,10 +1,11 @@
 <script lang="ts">
-  import "../app.css";
   import { browser } from "$app/environment";
   import { bootstrapWorldality, enableRouting } from "worldality";
 
   import AppHeader from "../lib/AppHeader.svelte";
   import Controls from "../lib/Controls.svelte";
+
+  import "../app.css";
 
   let { data, children } = $props();
 
@@ -35,7 +36,7 @@
     name="description"
     content="Interactive examples of Worldality internationalization with SvelteKit"
   />
-  {@html `<script>${data.worldalityScript}</script>`}
+  {@html "<scr" + "ipt>" + data.worldalityScript + "</scr" + "ipt>"}
 </svelte:head>
 
 <div

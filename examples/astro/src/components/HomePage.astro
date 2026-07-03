@@ -28,10 +28,10 @@ import { cn } from "example-shared/ui";
 import { getLocaleMetadata } from "worldality/server";
 import { getTranslations } from "worldality/server/astro";
 
-import AstroMark from "./AstroMark.astro";
-import Controls from "./Controls.astro";
 import Layout from "../layouts/Layout.astro";
 import { ASTRO_FRAMEWORK, ASTRO_IDS } from "../lib/page-state";
+import AstroMark from "./AstroMark.astro";
+import Controls from "./Controls.astro";
 
 const { locale, t } = await getTranslations(Astro);
 const localeData = getLocaleMetadata(locale);
@@ -88,14 +88,14 @@ function translateStudioStatusLabel(label: string): string {
           <h1 class="text-foreground">Worldality</h1>
           <div class="inline-flex flex-wrap items-center justify-center gap-2">
             <div
-              class="inline-flex min-h-10 min-w-40 items-center justify-center gap-2 px-4 body-lg whitespace-nowrap"
+              class="body-lg inline-flex min-h-10 min-w-40 items-center justify-center gap-2 px-4 whitespace-nowrap"
               style={`background-color:${ASTRO_FRAMEWORK.pillBackground};color:${ASTRO_FRAMEWORK.pillForeground}`}
             >
               <AstroMark class="size-5" />
               <p>{ASTRO_FRAMEWORK.label}</p>
             </div>
             <div
-              class="inline-flex min-h-10 items-center justify-center gap-1.5 px-3.5 body-lg text-white whitespace-nowrap"
+              class="body-lg inline-flex min-h-10 items-center justify-center gap-1.5 px-3.5 whitespace-nowrap text-white"
               style="background: linear-gradient(135deg, #8f45ff 0%, #6096f1 100%)"
               aria-hidden="true"
             >
@@ -108,7 +108,7 @@ function translateStudioStatusLabel(label: string): string {
               >
                 <path
                   d="M13.056 23.238a.57.57 0 0 1-1.02-.355v-5.202c0-.63-.512-1.143-1.144-1.143H5.148a.57.57 0 0 1-.464-.903l3.777-5.29c.54-.753 0-1.804-.93-1.804H.57a.574.574 0 0 1-.543-.746a.6.6 0 0 1 .08-.157L5.008.78a.57.57 0 0 1 .467-.24h14.589a.57.57 0 0 1 .466.903l-3.778 5.29c-.54.755 0 1.806.93 1.806h5.745c.238 0 .424.138.513.322a.56.56 0 0 1-.063.603z"
-                />
+                ></path>
               </svg>
               <span>Vite</span>
             </div>
@@ -129,10 +129,16 @@ function translateStudioStatusLabel(label: string): string {
             })}
           >
             <div class={CAPABILITY_IMAGE_WRAPPER_CLASS_NAME} aria-hidden="true">
-              <img src={studioPreviewImage.src} alt="" class={CAPABILITY_IMAGE_CLASS_NAME} />
+              <img
+                src={studioPreviewImage.src}
+                alt=""
+                class={CAPABILITY_IMAGE_CLASS_NAME}
+              />
             </div>
-            <div class={CAPABILITY_OVERLAY_CLASS_NAME} aria-hidden="true" />
-            <div class="relative z-10 flex w-full flex-col items-center justify-center gap-4">
+            <div class={CAPABILITY_OVERLAY_CLASS_NAME} aria-hidden="true"></div>
+            <div
+              class="relative z-10 flex w-full flex-col items-center justify-center gap-4"
+            >
               <div class={CAPABILITY_ICON_FRAME_CLASS_NAME}>
                 <Monitor class="text-blue-500" aria-hidden="true" />
               </div>
@@ -151,7 +157,9 @@ function translateStudioStatusLabel(label: string): string {
               </div>
             </div>
             <div class={CAPABILITY_FOOTER_CLASS_NAME}>
-              <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center body-sm">
+              <div
+                class="body-sm flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center"
+              >
                 <span
                   id={ASTRO_IDS.studioStatus}
                   class={cn(
@@ -161,8 +169,10 @@ function translateStudioStatusLabel(label: string): string {
                 >
                   <LoaderCircle
                     id={ASTRO_IDS.studioSpinner}
-                    class="size-3.5 animate-spin"
-                    hidden={!initialStudioStatus.isLoading}
+                    class={cn(
+                      "size-3.5 animate-spin",
+                      !initialStudioStatus.isLoading && "hidden",
+                    )}
                     aria-hidden="true"
                   />
                   <span id={ASTRO_IDS.studioStatusLabel}>
@@ -200,10 +210,16 @@ function translateStudioStatusLabel(label: string): string {
             aria-label={t("Change language")}
           >
             <div class={CAPABILITY_IMAGE_WRAPPER_CLASS_NAME} aria-hidden="true">
-              <img src={widgetPreviewImage.src} alt="" class={CAPABILITY_IMAGE_CLASS_NAME} />
+              <img
+                src={widgetPreviewImage.src}
+                alt=""
+                class={CAPABILITY_IMAGE_CLASS_NAME}
+              />
             </div>
-            <div class={CAPABILITY_OVERLAY_CLASS_NAME} aria-hidden="true" />
-            <div class="relative z-10 flex w-full flex-col items-center justify-center gap-4">
+            <div class={CAPABILITY_OVERLAY_CLASS_NAME} aria-hidden="true"></div>
+            <div
+              class="relative z-10 flex w-full flex-col items-center justify-center gap-4"
+            >
               <div class={CAPABILITY_ICON_FRAME_CLASS_NAME}>
                 <Puzzle class="text-pink-500" aria-hidden="true" />
               </div>
@@ -212,13 +228,13 @@ function translateStudioStatusLabel(label: string): string {
               </h4>
               <div class={CAPABILITY_CTA_CLASS_NAME}>
                 <Globe class="size-6" aria-hidden="true" />
-                <bdi class="locale-script" lang={localeData.code}>
+                <bdi class="locale-script" lang={locale}>
                   {localeData.nativeName}
                 </bdi>
               </div>
             </div>
             <div class={CAPABILITY_FOOTER_CLASS_NAME}>
-              <div class="text-center body-sm font-medium text-white/72">
+              <div class="body-sm text-center font-medium text-white/72">
                 {t("Change language")}
               </div>
             </div>

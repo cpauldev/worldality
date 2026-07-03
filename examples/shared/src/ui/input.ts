@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 export const inputVariants = cva(
-  "w-full min-w-0 rounded-lg border bg-clip-padding text-foreground shadow-xs transition-[border-color,box-shadow,background-color] outline-none disabled:cursor-not-allowed disabled:opacity-60 placeholder:text-muted-foreground/70 focus-visible:ring-[3px] focus-visible:ring-ring/20 [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none [&::-webkit-search-results-button]:appearance-none [&::-webkit-search-results-decoration]:appearance-none [&::-ms-clear]:hidden",
+  "w-full min-w-0 rounded-lg border bg-clip-padding text-foreground shadow-xs transition-[border-color,box-shadow,background-color] outline-none placeholder:text-muted-foreground/70 focus-visible:ring-[3px] focus-visible:ring-ring/20 disabled:cursor-not-allowed disabled:opacity-60 [&::-ms-clear]:hidden [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none [&::-webkit-search-results-button]:appearance-none [&::-webkit-search-results-decoration]:appearance-none",
   {
     variants: {
       variant: {

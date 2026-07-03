@@ -13,7 +13,7 @@ export function Header() {
         <h1 className="text-foreground">Worldality</h1>
         <div className="inline-flex flex-wrap items-center justify-center gap-2">
           <div
-            className="inline-flex min-h-10 min-w-40 items-center justify-center gap-2 px-4 body-lg whitespace-nowrap"
+            className="body-lg inline-flex min-h-10 min-w-40 items-center justify-center gap-2 px-4 whitespace-nowrap"
             style={{ backgroundColor: "#d83933", color: "#ffffff" }}
           >
             <ReactRouter className="size-5" aria-hidden="true" />

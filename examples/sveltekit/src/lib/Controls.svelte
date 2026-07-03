@@ -24,7 +24,9 @@
 </script>
 
 <div class="flex flex-wrap items-center justify-center gap-3">
-  <nav class="flex items-center gap-1 rounded-xl border border-border bg-background p-1">
+  <nav
+    class="flex items-center gap-1 rounded-xl border border-border bg-background p-1"
+  >
     <a
       href={homeHref}
       data-sveltekit-reload

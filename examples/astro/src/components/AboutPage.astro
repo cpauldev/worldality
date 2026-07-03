@@ -3,10 +3,10 @@ import { createFormatter } from "worldality";
 import { getLocaleMetadata } from "worldality/server";
 import { getTranslations } from "worldality/server/astro";
 
-import AstroMark from "./AstroMark.astro";
-import Controls from "./Controls.astro";
 import Layout from "../layouts/Layout.astro";
 import { ASTRO_FRAMEWORK, ASTRO_IDS } from "../lib/page-state";
+import AstroMark from "./AstroMark.astro";
+import Controls from "./Controls.astro";
 
 const { locale, t } = await getTranslations(Astro);
 const localeData = getLocaleMetadata(locale);
@@ -37,7 +37,7 @@ const format = createFormatter({ locale });
           <h1 class="text-foreground">Worldality</h1>
           <div class="inline-flex flex-wrap items-center justify-center gap-2">
             <div
-              class="inline-flex min-h-10 min-w-40 items-center justify-center gap-2 px-4 body-lg whitespace-nowrap"
+              class="body-lg inline-flex min-h-10 min-w-40 items-center justify-center gap-2 px-4 whitespace-nowrap"
               style={`background-color:${ASTRO_FRAMEWORK.pillBackground};color:${ASTRO_FRAMEWORK.pillForeground}`}
             >
               <AstroMark class="size-5" />
@@ -50,12 +50,16 @@ const format = createFormatter({ locale });
       <main class="space-y-8">
         <Controls activePage="about" locale={locale} t={t} />
 
-        <section class="w-full rounded-[calc(var(--radius-lg)+2px)] bg-secondary px-6 py-7 text-start">
+        <section
+          class="w-full rounded-[calc(var(--radius-lg)+2px)] bg-secondary px-6 py-7 text-start"
+        >
           <p class="body-lg text-secondary-foreground">
-            {t(
-              "This page shows how {brand} loads translated content across routes.",
-              { brand: "Worldality" },
-            )}
+            {
+              t(
+                "This page shows how {brand} loads translated content across routes.",
+                { brand: "Worldality" },
+              )
+            }
           </p>
           <div class="mt-6 grid gap-3 sm:grid-cols-2">
             <div class="rounded-lg bg-background/72 px-4 py-3">
@@ -63,10 +67,12 @@ const format = createFormatter({ locale });
                 {t("Currency")}
               </p>
               <p class="mt-1 text-foreground">
-                {format.number(1234.56, {
-                  style: "currency",
-                  currency: "USD",
-                })}
+                {
+                  format.number(1234.56, {
+                    style: "currency",
+                    currency: "USD",
+                  })
+                }
               </p>
             </div>
             <div class="rounded-lg bg-background/72 px-4 py-3">
@@ -88,9 +94,11 @@ const format = createFormatter({ locale });
                 {t("List")}
               </p>
               <p class="mt-1 text-foreground">
-                {format.list(["Astro", "Vite", "Worldality"], {
-                  type: "conjunction",
-                })}
+                {
+                  format.list(["Astro", "Vite", "Worldality"], {
+                    type: "conjunction",
+                  })
+                }
               </p>
             </div>
           </div>

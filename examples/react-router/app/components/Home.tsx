@@ -171,7 +171,7 @@ export function Home() {
         image={studioPreviewImage}
         title={WORLDALITY_STUDIO_LABEL}
         footer={
-          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center body-sm">
+          <div className="body-sm flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center">
             <span
               className={cn(
                 "font-medium",
@@ -214,7 +214,7 @@ export function Home() {
         image={widgetPreviewImage}
         title={WORLDALITY_WIDGET_LABEL}
         footer={
-          <div className="text-center body-sm font-medium text-white/72">
+          <div className="body-sm text-center font-medium text-white/72">
             {t("Change language")}
           </div>
         }

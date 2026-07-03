@@ -8,7 +8,7 @@ export interface FrameOptions {
 }
 
 export const frameVariants = cva(
-  "relative flex flex-col rounded-2xl bg-muted/72 p-1 *:[[data-slot=frame-panel]+[data-slot=frame-panel]]:mt-1",
+  "bg-muted/72 relative flex flex-col rounded-2xl p-1 *:[[data-slot=frame-panel]+[data-slot=frame-panel]]:mt-1",
 );
 
 export const framePanelVariants = cva(
@@ -17,9 +17,9 @@ export const framePanelVariants = cva(
 
 export const frameHeaderVariants = cva("flex flex-col px-5 py-4");
 
-export const frameTitleVariants = cva("font-semibold text-sm");
+export const frameTitleVariants = cva("text-sm font-semibold");
 
-export const frameDescriptionVariants = cva("text-muted-foreground text-sm");
+export const frameDescriptionVariants = cva("text-sm text-muted-foreground");
 
 export const frameFooterVariants = cva("px-5 py-4");
 

@@ -15,14 +15,14 @@ export function Header() {
         <h1 className="text-foreground">Worldality</h1>
         <div className="inline-flex flex-wrap items-center justify-center gap-2">
           <div
-            className="inline-flex min-h-10 min-w-40 items-center justify-center gap-2 px-4 body-lg whitespace-nowrap"
+            className="body-lg inline-flex min-h-10 min-w-40 items-center justify-center gap-2 px-4 whitespace-nowrap"
             style={{ backgroundColor: "#06b6d4", color: "#ffffff" }}
           >
             <React className="size-5" aria-hidden="true" />
             <p>React</p>
           </div>
           <div
-            className="inline-flex min-h-10 items-center justify-center gap-1.5 px-3.5 body-lg text-white whitespace-nowrap"
+            className="body-lg inline-flex min-h-10 items-center justify-center gap-1.5 px-3.5 whitespace-nowrap text-white"
             style={{
               background: "linear-gradient(135deg, #8f45ff 0%, #6096f1 100%)",
             }}

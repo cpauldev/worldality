@@ -1,4 +1,5 @@
 import { type JSX } from "solid-js";
+
 import { useCurrentLocale } from "worldality/solid";
 
 import { Controls } from "./Controls";

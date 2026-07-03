@@ -4,7 +4,7 @@ import { createElement } from "./dom";
 import { cn } from "./utils";
 
 export const cardVariants = cva(
-  "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border border-border/70 py-6 shadow-sm",
+  "flex flex-col gap-6 rounded-xl border border-border/70 bg-card py-6 text-card-foreground shadow-sm",
 );
 
 export const cardHeaderVariants = cva(
@@ -13,7 +13,7 @@ export const cardHeaderVariants = cva(
 
 export const cardTitleVariants = cva("leading-none font-semibold");
 
-export const cardDescriptionVariants = cva("text-muted-foreground text-sm");
+export const cardDescriptionVariants = cva("text-sm text-muted-foreground");
 
 export const cardContentVariants = cva("px-6");
 

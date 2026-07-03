@@ -1,4 +1,5 @@
 import { Match, Switch } from "solid-js";
+
 import { useCurrentPage, useLocaleRouting } from "worldality/solid";
 
 import { AboutPage } from "./pages/about";

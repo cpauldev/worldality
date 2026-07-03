@@ -5,9 +5,9 @@
  * and localStorage persistence for Svelte 5 (runes).
  */
 import {
-  type Theme,
   applyTheme as applyThemeToDOM,
   getInitialTheme,
+  type Theme,
   toggleTheme as toggleThemeValue,
 } from "../theme";
 

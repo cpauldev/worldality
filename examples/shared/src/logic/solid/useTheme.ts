@@ -6,7 +6,7 @@
  */
 import { createEffect, createSignal } from "solid-js";
 
-import { type Theme, applyTheme, getInitialTheme, toggleTheme } from "../theme";
+import { applyTheme, getInitialTheme, type Theme, toggleTheme } from "../theme";
 
 export function useTheme() {
   const [theme, setTheme] = createSignal<Theme>(getInitialTheme());

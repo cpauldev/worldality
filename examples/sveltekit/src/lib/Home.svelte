@@ -100,10 +100,16 @@
     })}
   >
     <div class={CAPABILITY_IMAGE_WRAPPER_CLASS_NAME} aria-hidden="true">
-      <img src={studioPreviewImage} alt="" class={CAPABILITY_IMAGE_CLASS_NAME} />
+      <img
+        src={studioPreviewImage}
+        alt=""
+        class={CAPABILITY_IMAGE_CLASS_NAME}
+      />
     </div>
     <div class={CAPABILITY_OVERLAY_CLASS_NAME} aria-hidden="true"></div>
-    <div class="relative z-10 flex w-full flex-col items-center justify-center gap-4">
+    <div
+      class="relative z-10 flex w-full flex-col items-center justify-center gap-4"
+    >
       <div class={CAPABILITY_ICON_FRAME_CLASS_NAME}>
         <Monitor class="text-blue-500" aria-hidden="true" />
       </div>
@@ -122,8 +128,12 @@
       </div>
     </div>
     <div class={CAPABILITY_FOOTER_CLASS_NAME}>
-      <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center body-sm">
-        <span class={cn("font-medium", getStudioStatusClassName(studioStatus.tone))}>
+      <div
+        class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center body-sm"
+      >
+        <span
+          class={cn("font-medium", getStudioStatusClassName(studioStatus.tone))}
+        >
           {#if studioStatus.isLoading}
             <LoaderCircle
               class="me-1 inline size-3.5 animate-spin align-[-2px]"
@@ -149,10 +159,16 @@
     aria-label={t("Change language")}
   >
     <div class={CAPABILITY_IMAGE_WRAPPER_CLASS_NAME} aria-hidden="true">
-      <img src={widgetPreviewImage} alt="" class={CAPABILITY_IMAGE_CLASS_NAME} />
+      <img
+        src={widgetPreviewImage}
+        alt=""
+        class={CAPABILITY_IMAGE_CLASS_NAME}
+      />
     </div>
     <div class={CAPABILITY_OVERLAY_CLASS_NAME} aria-hidden="true"></div>
-    <div class="relative z-10 flex w-full flex-col items-center justify-center gap-4">
+    <div
+      class="relative z-10 flex w-full flex-col items-center justify-center gap-4"
+    >
       <div class={CAPABILITY_ICON_FRAME_CLASS_NAME}>
         <Puzzle class="text-pink-500" aria-hidden="true" />
       </div>

@@ -7,10 +7,12 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "react-router";
+
 import { bootstrapWorldality, getWorldalityHtmlAttrs } from "worldality";
 
-import appStylesHref from "./app.css?url";
 import type { loader as rootLoader } from "./root.server";
+
+import appStylesHref from "./app.css?url";
 
 export { loader } from "./root.server";
 

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed, onMounted, onUnmounted, ref } from "vue";
+
 import {
   CAPABILITY_CTA_CLASS_NAME,
   CAPABILITY_FOOTER_CLASS_NAME,
@@ -27,7 +29,6 @@ import {
   Monitor,
   Puzzle,
 } from "lucide-vue-next";
-import { computed, onMounted, onUnmounted, ref } from "vue";
 import { t, useCurrentLocale } from "worldality/vue";
 
 const WORLDALITY_STUDIO_LABEL = "Worldality Studio";
@@ -88,7 +89,9 @@ onUnmounted(() => {
       target="_blank"
       rel="noreferrer"
       :class="cardClassName"
-      :aria-label="(locale.code, t('Open {studio}', { studio: WORLDALITY_STUDIO_LABEL }))"
+      :aria-label="
+        (locale.code, t('Open {studio}', { studio: WORLDALITY_STUDIO_LABEL }))
+      "
     >
       <div :class="CAPABILITY_IMAGE_WRAPPER_CLASS_NAME" aria-hidden="true">
         <img
@@ -116,7 +119,7 @@ onUnmounted(() => {
       </div>
       <div :class="CAPABILITY_FOOTER_CLASS_NAME">
         <div
-          class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center body-sm"
+          class="body-sm flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center"
         >
           <span
             :class="
@@ -134,12 +137,9 @@ onUnmounted(() => {
             v-if="studioStatus.urlLabel"
             class="text-white/48"
             aria-hidden="true"
-          >/</span>
-          <bdi
-            v-if="studioStatus.urlLabel"
-            class="text-white/72"
-            dir="ltr"
+            >/</span
           >
+          <bdi v-if="studioStatus.urlLabel" class="text-white/72" dir="ltr">
             {{ studioStatus.urlLabel }}
           </bdi>
         </div>
@@ -179,7 +179,7 @@ onUnmounted(() => {
         </div>
       </div>
       <div :class="CAPABILITY_FOOTER_CLASS_NAME">
-        <div class="text-center body-sm font-medium text-white/72">
+        <div class="body-sm text-center font-medium text-white/72">
           {{ (locale.code, t("Change language")) }}
         </div>
       </div>

@@ -1,7 +1,8 @@
+import { createMemo, For } from "solid-js";
+
 import { useTheme } from "example-shared/solid/useTheme";
 import { buttonVariants, cn } from "example-shared/ui";
 import { Moon, Sun } from "lucide-solid";
-import { For, createMemo } from "solid-js";
 import {
   getAvailableLocales,
   getLocalizedUrl,

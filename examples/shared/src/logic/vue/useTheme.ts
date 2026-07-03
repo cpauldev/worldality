@@ -6,7 +6,7 @@
  */
 import { ref, watch } from "vue";
 
-import { type Theme, applyTheme, getInitialTheme, toggleTheme } from "../theme";
+import { applyTheme, getInitialTheme, type Theme, toggleTheme } from "../theme";
 
 export function useTheme() {
   const theme = ref<Theme>(getInitialTheme());

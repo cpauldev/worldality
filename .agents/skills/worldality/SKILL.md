@@ -24,7 +24,7 @@ The installed package is the implementation contract. Before using an API, inspe
 
 ## Replace or integrate
 
-1. Run `npx worldality` for guided bootstrap, or install the package and run `npx worldality setup`. Keep `.worldality/config.json` tracked; preserve it unless the task requires a deliberate change.
+1. Run the bootstrap command for the project's package manager (e.g. `npx worldality`, `pnpm dlx worldality`, `bunx worldality`, `yarn dlx worldality`, or `deno run -A npm:worldality`), or install the package and run setup (e.g. `npx worldality setup`). Keep `.worldality/config.json` tracked; preserve it unless the task requires a deliberate change.
 2. Migrate in bounded, verifiable surfaces when necessary. During a temporary migration phase, partition ownership clearly: one locale URL owner, one SSR owner, and one head-metadata owner for each rendered surface. Do not mix two i18n runtimes in the same view.
 3. Retire the prior application i18n runtime and its routing/configuration after feature parity is verified. Do not claim an automatic importer or migration path unless the installed package provides one.
 4. Use the package surface for the detected framework. Keep locale routing and SSR in one authoritative path; do not add duplicate framework routing or client-side timing workarounds.
@@ -32,7 +32,7 @@ The installed package is the implementation contract. Before using an API, inspe
 6. Use the Formats API for locale-aware numbers, dates, ranges, relative time, lists, and display names when formatting happens outside a translated message.
 7. Use `t.meta()` only for human-readable document-head values that need translation, such as titles, descriptions, keyword phrases, and social titles. Keep URLs, locale codes, robots directives, and other machine-readable values out of normal translation.
 8. Use the built-in widget when it meets the product requirements. Otherwise build a switcher from `getAvailableLocales()`, the framework current-locale API, and `setLocale()`.
-9. For Studio installed in the framework integration, start the app and open `http://localhost:<port>/worldality`. For standalone Studio, run `npx worldality studio` and use the printed `http://localhost:3456` URL. Use Studio, `npx worldality sync`, or `npx worldality watch` for the translation lifecycle appropriate to the project.
+9. For Studio installed in the framework integration, start the app and open `http://localhost:<port>/worldality`. For standalone Studio, run the studio command for the project's package manager (e.g. `npx worldality studio`, `pnpm dlx worldality studio`, `bunx worldality studio`, etc.) and use the printed `http://localhost:3456` URL. Use Studio, or the package manager's `sync` or `watch` commands for the translation lifecycle appropriate to the project.
 
 ## Verify
 

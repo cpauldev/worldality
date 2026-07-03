@@ -10,7 +10,7 @@
     "noEmit": true,
     "skipLibCheck": true,
     "rootDirs": [".", "./.react-router/types"],
-    "types": ["vite/client"]
+    "types": ["vite/client", "node"]
   },
   "include": ["app", ".react-router/types/**/*"]
 }

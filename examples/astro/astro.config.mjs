@@ -1,5 +1,6 @@
-import node from "@astrojs/node";
 import { defineConfig } from "astro/config";
+
+import node from "@astrojs/node";
 import { worldalityStudio } from "worldality/studio";
 
 export default defineConfig({

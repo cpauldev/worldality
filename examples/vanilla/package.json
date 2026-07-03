@@ -1,22 +1,22 @@
 {
   "name": "example-vanilla",
-  "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "private": true,
   "license": "MIT",
+  "type": "module",
   "scripts": {
-    "dev": "vite",
     "build": "vite build",
+    "dev": "vite",
     "preview": "vite preview"
   },
   "dependencies": {
-    "worldality": "^0.1.3",
-    "example-shared": "workspace:*"
+    "example-shared": "workspace:*",
+    "worldality": "^0.1.3"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.3.0",
+    "@tailwindcss/postcss": "^4.3.1",
     "autoprefixer": "^10.5.0",
     "postcss": "^8.5.15",
-    "vite": "^8.0.14"
+    "vite": "^8.0.16"
   }
 }

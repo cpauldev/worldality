@@ -1,4 +1,4 @@
-![Worldality banner](assets/worldality-banner.png)
+![Worldality banner](assets/worldality-banner.webp)
 
 # Worldality: Make Your Website Global
 
@@ -6,7 +6,7 @@ Make your website global with Worldality, an internationalization platform built
 
 Worldality is framework-agnostic and made for custom-built websites and apps across React, Next.js, Vue, Nuxt, Svelte, and more. It combines live translation, language-based routing, translated page metadata, a language switcher, text detection, Worldality CLI, and Worldality Studio for browsing strings, translating content, and tracking locale progress.
 
-![Worldality Studio](assets/worldality-studio.png)
+![Worldality Studio](assets/worldality-studio.webp)
 
 ### [Learn more at Worldality.com](https://worldality.com/)
 
@@ -26,7 +26,7 @@ This repository is the public home for runnable Worldality examples and support 
 
 ## Preview
 
-![Worldality example](assets/example.png)
+![Worldality example](assets/example.webp)
 
 ## Install
 
@@ -62,17 +62,45 @@ bun run build
 Start the guided setup from your app's project root:
 
 ```bash
+# npm
 npx worldality
+
+# pnpm
+pnpm dlx worldality
+
+# bun
+bunx worldality
+
+# yarn
+yarn dlx worldality
+
+# deno
+deno run -A npm:worldality
 ```
 
 If you prefer to install the package first, run setup after installing it:
 
 ```bash
+# npm
 npm install worldality
 npx worldality setup
-```
 
-You can also use your package manager's equivalent install command, such as `bun add worldality`, `pnpm add worldality`, or `yarn add worldality`, then run `npx worldality setup`.
+# pnpm
+pnpm add worldality
+pnpm dlx worldality setup
+
+# bun
+bun add worldality
+bunx worldality setup
+
+# yarn
+yarn add worldality
+yarn dlx worldality setup
+
+# deno
+deno add npm:worldality
+deno run -A npm:worldality setup
+```
 
 ## Issues
 

@@ -11,9 +11,11 @@ const __dirname = dirname(__filename);
 const ROOT_DIR = existsSync(join(__dirname, "..", "package.json"))
   ? join(__dirname, "..")
   : join(__dirname, "../..");
-const EXAMPLES_ROOT = existsSync(join(ROOT_DIR, "examples"))
-  ? join(ROOT_DIR, "examples")
-  : ROOT_DIR;
+const EXAMPLES_ROOT = existsSync(join(ROOT_DIR, "apps", "examples"))
+  ? join(ROOT_DIR, "apps", "examples")
+  : existsSync(join(ROOT_DIR, "examples"))
+    ? join(ROOT_DIR, "examples")
+    : ROOT_DIR;
 const ROOT_BIN_DIR = join(ROOT_DIR, "node_modules", ".bin");
 const PORT_RANGE_START = 4600;
 const PORT_CLEANUP_SPAN = 20;
@@ -614,6 +616,14 @@ function startExample(
 }
 
 function main() {
+  if (!existsSync(join(ROOT_DIR, "node_modules"))) {
+    log(
+      `Error: node_modules directory not found at ${ROOT_DIR}.\nPlease run 'bun install' first to install example dependencies.`,
+      COLORS.red,
+    );
+    process.exit(1);
+  }
+
   const { openBrowser, selectedExamples } = parseArguments(
     process.argv.slice(2),
   );

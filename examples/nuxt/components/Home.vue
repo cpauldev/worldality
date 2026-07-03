@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed, onMounted, onUnmounted, ref } from "vue";
+
 import {
   CAPABILITY_CTA_CLASS_NAME,
   CAPABILITY_FOOTER_CLASS_NAME,
@@ -27,7 +29,6 @@ import {
   Monitor,
   Puzzle,
 } from "lucide-vue-next";
-import { computed, onMounted, onUnmounted, ref } from "vue";
 import { t, useCurrentLocale } from "worldality/vue";
 
 const locale = useCurrentLocale();
@@ -89,13 +90,21 @@ onUnmounted(() => {
       target="_blank"
       rel="noreferrer"
       :class="cardClassName"
-      :aria-label="(locale.code, t('Open {studio}', { studio: WORLDALITY_STUDIO_LABEL }))"
+      :aria-label="
+        (locale.code, t('Open {studio}', { studio: WORLDALITY_STUDIO_LABEL }))
+      "
     >
       <div :class="CAPABILITY_IMAGE_WRAPPER_CLASS_NAME" aria-hidden="true">
-        <img :src="studioPreviewImage" alt="" :class="CAPABILITY_IMAGE_CLASS_NAME" />
+        <img
+          :src="studioPreviewImage"
+          alt=""
+          :class="CAPABILITY_IMAGE_CLASS_NAME"
+        />
       </div>
       <div :class="CAPABILITY_OVERLAY_CLASS_NAME" aria-hidden="true" />
-      <div class="relative z-10 flex w-full flex-col items-center justify-center gap-4">
+      <div
+        class="relative z-10 flex w-full flex-col items-center justify-center gap-4"
+      >
         <div :class="CAPABILITY_ICON_FRAME_CLASS_NAME">
           <Monitor class="text-blue-500" aria-hidden="true" />
         </div>
@@ -112,8 +121,14 @@ onUnmounted(() => {
         </div>
       </div>
       <div :class="CAPABILITY_FOOTER_CLASS_NAME">
-        <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center body-sm">
-          <span :class="cn('font-medium', getStudioStatusClassName(studioStatus.tone))">
+        <div
+          class="body-sm flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center"
+        >
+          <span
+            :class="
+              cn('font-medium', getStudioStatusClassName(studioStatus.tone))
+            "
+          >
             <LoaderCircle
               v-if="studioStatus.isLoading"
               class="me-1 inline size-3.5 animate-spin align-[-2px]"
@@ -125,7 +140,8 @@ onUnmounted(() => {
             v-if="studioStatus.urlLabel"
             class="text-white/48"
             aria-hidden="true"
-          >/</span>
+            >/</span
+          >
           <bdi v-if="studioStatus.urlLabel" class="text-white/72" dir="ltr">
             {{ studioStatus.urlLabel }}
           </bdi>
@@ -135,15 +151,25 @@ onUnmounted(() => {
 
     <button
       type="button"
-      :ref="(node) => { widget.buttonRef.value = node as HTMLButtonElement | null; }"
+      :ref="
+        (node) => {
+          widget.buttonRef.value = node as HTMLButtonElement | null;
+        }
+      "
       :class="cardClassName"
       :aria-label="(locale.code, t('Change language'))"
     >
       <div :class="CAPABILITY_IMAGE_WRAPPER_CLASS_NAME" aria-hidden="true">
-        <img :src="widgetPreviewImage" alt="" :class="CAPABILITY_IMAGE_CLASS_NAME" />
+        <img
+          :src="widgetPreviewImage"
+          alt=""
+          :class="CAPABILITY_IMAGE_CLASS_NAME"
+        />
       </div>
       <div :class="CAPABILITY_OVERLAY_CLASS_NAME" aria-hidden="true" />
-      <div class="relative z-10 flex w-full flex-col items-center justify-center gap-4">
+      <div
+        class="relative z-10 flex w-full flex-col items-center justify-center gap-4"
+      >
         <div :class="CAPABILITY_ICON_FRAME_CLASS_NAME">
           <Puzzle class="text-pink-500" aria-hidden="true" />
         </div>
@@ -158,7 +184,7 @@ onUnmounted(() => {
         </div>
       </div>
       <div :class="CAPABILITY_FOOTER_CLASS_NAME">
-        <div class="text-center body-sm font-medium text-white/72">
+        <div class="body-sm text-center font-medium text-white/72">
           {{ (locale.code, t("Change language")) }}
         </div>
       </div>

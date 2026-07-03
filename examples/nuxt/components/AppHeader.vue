@@ -10,7 +10,7 @@
       <h1 class="text-foreground">Worldality</h1>
       <div class="inline-flex flex-wrap items-center justify-center gap-2">
         <div
-          class="inline-flex min-h-10 min-w-40 items-center justify-center gap-2 px-4 body-lg whitespace-nowrap"
+          class="body-lg inline-flex min-h-10 min-w-40 items-center justify-center gap-2 px-4 whitespace-nowrap"
           style="background-color: #00dc82; color: #031b18"
         >
           <NuxtIcon class="size-5" aria-hidden="true" />

@@ -2,6 +2,8 @@
 
 import { type ReactNode, type Ref, useEffect, useState } from "react";
 
+import Image from "next/image";
+
 import {
   CAPABILITY_CTA_CLASS_NAME,
   CAPABILITY_FOOTER_CLASS_NAME,
@@ -93,7 +95,13 @@ function CapabilityTile({
   const content = (
     <>
       <div aria-hidden="true" className={CAPABILITY_IMAGE_WRAPPER_CLASS_NAME}>
-        <img src={imageSrc} alt="" className={CAPABILITY_IMAGE_CLASS_NAME} />
+        <Image
+          fill
+          src={imageSrc}
+          alt=""
+          className={CAPABILITY_IMAGE_CLASS_NAME}
+          sizes="100vw"
+        />
       </div>
       <div aria-hidden="true" className={CAPABILITY_OVERLAY_CLASS_NAME} />
       <div className="relative z-10 flex w-full flex-col items-center justify-center gap-4">
@@ -179,7 +187,7 @@ export function Home() {
         image={studioPreviewImage}
         title={WORLDALITY_STUDIO_LABEL}
         footer={
-          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center body-sm">
+          <div className="body-sm flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center">
             <span
               className={cn(
                 "font-medium",
@@ -222,7 +230,7 @@ export function Home() {
         image={widgetPreviewImage}
         title={WORLDALITY_WIDGET_LABEL}
         footer={
-          <div className="text-center body-sm font-medium text-white/72">
+          <div className="body-sm text-center font-medium text-white/72">
             {t("Change language")}
           </div>
         }

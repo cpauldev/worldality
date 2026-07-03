@@ -1,4 +1,12 @@
 import {
+  createMemo,
+  createSignal,
+  type JSX,
+  onCleanup,
+  onMount,
+} from "solid-js";
+
+import {
   CAPABILITY_CTA_CLASS_NAME,
   CAPABILITY_FOOTER_CLASS_NAME,
   CAPABILITY_ICON_FRAME_CLASS_NAME,
@@ -26,13 +34,6 @@ import {
   Monitor,
   Puzzle,
 } from "lucide-solid";
-import {
-  type JSX,
-  createMemo,
-  createSignal,
-  onCleanup,
-  onMount,
-} from "solid-js";
 import { t, useCurrentLocale } from "worldality/solid";
 
 const WORLDALITY_STUDIO_LABEL = "Worldality Studio";
@@ -173,7 +174,7 @@ export function Home() {
         image={studioPreviewImage}
         title={WORLDALITY_STUDIO_LABEL}
         footer={
-          <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center body-sm">
+          <div class="body-sm flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center">
             <span
               class={cn(
                 "font-medium",
@@ -216,7 +217,7 @@ export function Home() {
         image={widgetPreviewImage}
         title={WORLDALITY_WIDGET_LABEL}
         footer={
-          <div class="text-center body-sm font-medium text-white/72">
+          <div class="body-sm text-center font-medium text-white/72">
             {locale() && t("Change language")}
           </div>
         }

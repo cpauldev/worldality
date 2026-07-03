@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import { framePanelVariants } from "./frame";
 
 const frameMiddleVariants = cva(
-  "rounded-b-none border-b-0 bg-card px-5 py-4 overflow-x-auto",
+  "overflow-x-auto rounded-b-none border-b-0 bg-card px-5 py-4",
 );
 
 export const codeBlockVariants = cva(
@@ -21,7 +21,7 @@ export const codeBlockVariants = cva(
   },
 );
 
-export const codeTextVariants = cva("font-mono wl-code-text", {
+export const codeTextVariants = cva("wl-code-text font-mono", {
   variants: {
     variant: {
       default: "text-foreground",

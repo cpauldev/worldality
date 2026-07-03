@@ -1,5 +1,5 @@
-import studioPreviewImage from "../assets/abstract-green-field-sky.png";
-import widgetPreviewImage from "../assets/abstract-violet-coral-petals.png";
+import studioPreviewImage from "../assets/green-field-sky.webp";
+import widgetPreviewImage from "../assets/violet-coral-petals.webp";
 
 export const CARD_ELEVATION_SHADOW_CLASS_NAME =
   "[box-shadow:0_56px_72px_-16px_#00275008,0_32px_32px_-16px_#00275008,0_6px_12px_-3px_#0027500a]";

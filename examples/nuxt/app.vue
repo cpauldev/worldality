@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useHead, useRequestHeaders, useRequestURL } from "#imports";
 
-import "~/app.css";
 import { bootstrapWorldality } from "worldality/vue";
+
+import "~/app.css";
 
 useHead({
   link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
@@ -15,9 +16,8 @@ let worldalityData;
 
 if (import.meta.server) {
   const { resolve } = await import("node:path");
-  const { configureServerRuntime, loadSSRTranslations } = await import(
-    "worldality/server/nuxt"
-  );
+  const { configureServerRuntime, loadSSRTranslations } =
+    await import("worldality/server/nuxt");
 
   configureServerRuntime({
     manifestDir: resolve(process.cwd(), "public"),
@@ -31,9 +31,8 @@ if (import.meta.server) {
 
 if (import.meta.server && worldalityData) {
   bootstrapWorldality(worldalityData);
-  const { generateWorldalityScript, getWorldalityHtmlAttrs } = await import(
-    "worldality/server/nuxt"
-  );
+  const { generateWorldalityScript, getWorldalityHtmlAttrs } =
+    await import("worldality/server/nuxt");
   const htmlAttrs = getWorldalityHtmlAttrs(worldalityData);
 
   useHead({
@@ -45,9 +44,6 @@ if (import.meta.server && worldalityData) {
         tagPosition: "head",
       },
     ],
-    __dangerouslyDisableSanitizersByTagID: {
-      "worldality-ssr": ["innerHTML"],
-    },
   });
 }
 </script>

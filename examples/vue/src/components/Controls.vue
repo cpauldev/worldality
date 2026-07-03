@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { computed } from "vue";
+
 import { buttonVariants, cn } from "example-shared/ui";
 import { useTheme } from "example-shared/vue/useTheme";
 import { Moon, Sun } from "lucide-vue-next";
-import { computed } from "vue";
 import {
   getAvailableLocales,
   setLocale,
@@ -23,7 +24,9 @@ const isAboutPage = computed(() => currentPage.value === "about");
 
 <template>
   <div class="flex flex-wrap items-center justify-center gap-3">
-    <nav class="flex items-center gap-1 rounded-xl border border-border bg-background p-1">
+    <nav
+      class="flex items-center gap-1 rounded-xl border border-border bg-background p-1"
+    >
       <a
         href="/"
         :class="

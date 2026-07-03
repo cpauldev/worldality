@@ -6,7 +6,7 @@ import { cn } from "./utils";
 export const fieldVariants = cva("grid gap-2");
 
 export const labelVariants = cva(
-  "inline-flex items-center gap-2 font-medium text-base/4.5 sm:text-sm/4",
+  "inline-flex items-center gap-2 text-base/4.5 font-medium sm:text-sm/4",
 );
 
 export function createField(className = ""): HTMLDivElement {

@@ -1,4 +1,5 @@
 import { createMemo } from "solid-js";
+
 import { getFormatter, t, useCurrentLocale } from "worldality/solid";
 
 export function About() {
