@@ -12,6 +12,8 @@ import { bootstrapWorldality, getWorldalityHtmlAttrs } from "worldality";
 
 import type { loader as rootLoader } from "./root.server";
 
+import { ThemeProvider } from "./components/ThemeProvider";
+
 import appStylesHref from "./app.css?url";
 
 export { loader } from "./root.server";
@@ -43,13 +45,16 @@ export const links: LinksFunction = () => [
 ];
 
 export default function App() {
-  const { worldalityData, worldalityScript } =
+  const { theme, worldalityData, worldalityScript } =
     useLoaderData<typeof rootLoader>();
   bootstrapWorldality(worldalityData);
   const htmlAttrs = getWorldalityHtmlAttrs(worldalityData);
 
   return (
-    <html {...htmlAttrs} className="font-sans antialiased">
+    <html
+      {...htmlAttrs}
+      className={`font-sans antialiased${theme === "dark" ? "dark" : ""}`}
+    >
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -63,7 +68,9 @@ export default function App() {
         />
       </head>
       <body>
-        <Outlet />
+        <ThemeProvider initialTheme={theme}>
+          <Outlet />
+        </ThemeProvider>
         <ScrollRestoration />
         <Scripts />
       </body>

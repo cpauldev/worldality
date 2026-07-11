@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  import { useTheme } from "$lib/theme.svelte";
+  import { createWidget } from "$lib/widget.svelte";
   import {
     ArrowUpRight,
     Globe,
@@ -26,12 +28,10 @@
     getInitialStudioStatus,
     getStudioStatusClassName,
   } from "example-shared/studio";
-  import { createTheme } from "example-shared/svelte/theme.svelte";
-  import { createWidget } from "example-shared/svelte/widget.svelte";
   import { cn } from "example-shared/ui";
   import { currentLocale, t } from "worldality/svelte";
 
-  const theme = createTheme();
+  const theme = useTheme();
   const widget = createWidget(() => theme.value);
   const WORLDALITY_STUDIO_LABEL = "Worldality Studio";
   const WORLDALITY_WIDGET_LABEL = "Worldality Widget";

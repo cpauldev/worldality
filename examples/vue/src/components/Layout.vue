@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { useCurrentLocale } from "worldality/vue";
 
+import { provideTheme } from "../composables/useTheme";
 import Controls from "./Controls.vue";
 import Header from "./Header.vue";
 
 const locale = useCurrentLocale();
+provideTheme();
 </script>
 
 <template>

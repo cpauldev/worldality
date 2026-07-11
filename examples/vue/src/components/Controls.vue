@@ -2,7 +2,6 @@
 import { computed } from "vue";
 
 import { buttonVariants, cn } from "example-shared/ui";
-import { useTheme } from "example-shared/vue/useTheme";
 import { Moon, Sun } from "lucide-vue-next";
 import {
   getAvailableLocales,
@@ -12,7 +11,9 @@ import {
   useCurrentPage,
 } from "worldality/vue";
 
-const { theme, toggle } = useTheme();
+import { useTheme } from "../composables/useTheme";
+
+const { theme, toggleTheme } = useTheme();
 const locale = useCurrentLocale();
 const currentPage = useCurrentPage();
 const availableLocales = computed(() => {
@@ -60,7 +61,7 @@ const isAboutPage = computed(() => currentPage.value === "about");
       <button
         :class="cn(buttonVariants({ variant: 'ghost' }), 'gap-2 px-3')"
         :aria-label="(locale.code, t('Toggle theme'))"
-        @click="toggle"
+        @click="toggleTheme"
       >
         <Moon v-if="theme === 'light'" class="size-4" aria-hidden="true" />
         <Sun v-else class="size-4" aria-hidden="true" />

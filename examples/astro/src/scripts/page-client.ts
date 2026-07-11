@@ -4,9 +4,20 @@ import {
   getInitialStudioStatus,
   getStudioStatusClassName,
 } from "example-shared/studio";
-import { applyTheme, getInitialTheme, toggleTheme } from "example-shared/theme";
 import { t, useLocaleRouting } from "worldality/astro";
 import { WorldalityWidget } from "worldality/widget";
+
+type Theme = "light" | "dark";
+function getInitialTheme(): Theme {
+  return localStorage.getItem("theme") === "dark" ? "dark" : "light";
+}
+function applyTheme(theme: Theme) {
+  document.documentElement.classList.toggle("dark", theme === "dark");
+  localStorage.setItem("theme", theme);
+}
+function toggleTheme(theme: Theme): Theme {
+  return theme === "light" ? "dark" : "light";
+}
 
 import { ASTRO_IDS } from "../lib/page-state";
 

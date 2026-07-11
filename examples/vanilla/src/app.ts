@@ -2,7 +2,6 @@ import {
   type ExampleFrameworkId,
   getExampleFramework,
 } from "example-shared/non-framework/frameworks";
-import { applyTheme, getInitialTheme, toggleTheme } from "example-shared/theme";
 import { buttonVariants, cn } from "example-shared/ui";
 import {
   detectCurrentPage,
@@ -17,13 +16,25 @@ import {
 import { renderAbout } from "./components/about";
 import { renderHome, teardownHome } from "./components/home";
 
+type Theme = "light" | "dark";
+function getInitialTheme(): Theme {
+  return localStorage.getItem("theme") === "dark" ? "dark" : "light";
+}
+function applyTheme(theme: Theme) {
+  document.documentElement.classList.toggle("dark", theme === "dark");
+  localStorage.setItem("theme", theme);
+}
+function toggleTheme(theme: Theme): Theme {
+  return theme === "light" ? "dark" : "light";
+}
+
 export interface MountExampleAppOptions {
   container: HTMLElement;
   framework: ExampleFrameworkId;
 }
 
 type AppState = {
-  theme: "light" | "dark";
+  theme: Theme;
 };
 
 function escapeHtml(value: string): string {
@@ -113,7 +124,7 @@ function renderShell(
 ): string {
   const locale = getCurrentLocale();
   const page = detectCurrentPage();
-  const content = page === "about" ? renderAbout() : renderHome();
+  const content = page === "about" ? renderAbout() : renderHome(state.theme);
 
   applyTheme(state.theme);
 

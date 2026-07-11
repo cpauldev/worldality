@@ -1,6 +1,5 @@
 import { createMemo, For } from "solid-js";
 
-import { useTheme } from "example-shared/solid/useTheme";
 import { buttonVariants, cn } from "example-shared/ui";
 import { Moon, Sun } from "lucide-solid";
 import {
@@ -12,8 +11,10 @@ import {
   useCurrentPage,
 } from "worldality/solid";
 
+import { useTheme } from "./ThemeProvider";
+
 export function Controls() {
-  const { theme, toggle } = useTheme();
+  const { theme, toggleTheme } = useTheme();
   const locale = useCurrentLocale();
   const currentPage = useCurrentPage();
   const availableLocales = createMemo(() => {
@@ -57,7 +58,7 @@ export function Controls() {
       </nav>
       <div class="rounded-xl border border-border bg-background p-1">
         <button
-          onClick={toggle}
+          onClick={toggleTheme}
           class={cn(buttonVariants({ variant: "ghost" }), "gap-2 px-3")}
           aria-label={locale() && t("Toggle theme")}
         >

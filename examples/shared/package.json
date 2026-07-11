@@ -7,28 +7,18 @@
     "./ui": "./src/ui/index.ts",
     "./tailwind.css": "./src/styles/tailwind.css",
     "./constants": "./src/logic/constants.ts",
-    "./theme": "./src/logic/theme.ts",
     "./format-handlers": "./src/logic/format-handlers.ts",
     "./studio": "./src/logic/studio.ts",
     "./capability-cards": "./src/logic/capability-cards.ts",
-    "./assets/green-field-sky.webp": "./src/assets/green-field-sky.webp",
-    "./assets/violet-coral-petals.webp": "./src/assets/violet-coral-petals.webp",
-    "./non-framework/frameworks": "./src/non-framework/frameworks.ts",
-    "./react/useTheme": "./src/logic/react/useTheme.ts",
-    "./react/useWorldalityWidget": "./src/logic/react/useWorldalityWidget.ts",
-    "./vue/useTheme": "./src/logic/vue/useTheme.ts",
-    "./vue/useWorldalityWidget": "./src/logic/vue/useWorldalityWidget.ts",
-    "./solid/useTheme": "./src/logic/solid/useTheme.ts",
-    "./solid/useWorldalityWidget": "./src/logic/solid/useWorldalityWidget.ts",
-    "./svelte/theme.svelte": "./src/logic/svelte/theme.svelte.ts",
-    "./svelte/widget.svelte": "./src/logic/svelte/widget.svelte.ts"
+    "./assets/blue.webp": "./src/assets/blue.webp",
+    "./assets/red.webp": "./src/assets/red.webp",
+    "./non-framework/frameworks": "./src/non-framework/frameworks.ts"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "tailwind-merge": "^3.6.0",
-    "tailwindcss": "^4.3.1",
-    "worldality": "^0.2.1"
+    "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
     "@types/react": "^19.2.17",

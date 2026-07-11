@@ -2,7 +2,6 @@
 import { computed } from "vue";
 
 import { buttonVariants, cn } from "example-shared/ui";
-import { useTheme } from "example-shared/vue/useTheme";
 import { Moon, Sun } from "lucide-vue-next";
 import {
   getAvailableLocales,
@@ -12,7 +11,12 @@ import {
   useCurrentLocale,
 } from "worldality/vue";
 
-const { theme, toggle } = useTheme();
+const colorMode = useColorMode();
+const theme = computed(() => colorMode.value);
+const isThemeResolved = computed(() => !colorMode.unknown);
+const toggleTheme = () => {
+  colorMode.preference = colorMode.value === "dark" ? "light" : "dark";
+};
 const locale = useCurrentLocale();
 const route = useRoute();
 const availableLocales = computed(() => {
@@ -68,10 +72,15 @@ const aboutHref = computed(() => {
       <button
         :class="cn(buttonVariants({ variant: 'ghost' }), 'gap-2 px-3')"
         :aria-label="t('Toggle theme')"
-        @click="toggle"
+        @click="toggleTheme"
       >
-        <Moon v-if="theme === 'light'" class="size-4" aria-hidden="true" />
-        <Sun v-else class="size-4" aria-hidden="true" />
+        <Moon
+          v-if="isThemeResolved && theme === 'light'"
+          class="size-4"
+          aria-hidden="true"
+        />
+        <Sun v-else-if="isThemeResolved" class="size-4" aria-hidden="true" />
+        <span v-else class="size-4" aria-hidden="true" />
         <span>{{ t("Toggle theme") }}</span>
       </button>
     </div>

@@ -13,7 +13,7 @@
     "example-shared": "workspace:*",
     "lucide-solid": "^1.21.0",
     "solid-js": "^1.9.13",
-    "worldality": "^0.2.1"
+    "worldality": "^0.2.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.1",

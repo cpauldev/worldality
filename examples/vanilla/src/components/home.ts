@@ -42,7 +42,7 @@ function icon(
   className: string,
 ): string {
   const normalizedClassName =
-    className.includes("text-blue-500") || className.includes("text-pink-500")
+    className.includes("text-blue-500") || className.includes("text-rose-500")
       ? cn("size-7", className)
       : className;
   const markup = {
@@ -75,8 +75,8 @@ function icon(
                 : 24;
   const color = normalizedClassName.includes("text-blue-500")
     ? "#3b82f6"
-    : normalizedClassName.includes("text-pink-500")
-      ? "#ec4899"
+    : normalizedClassName.includes("text-rose-500")
+      ? "#f43f5e"
       : "";
   const style = `width:${size}px;height:${size}px${color ? `;color:${color}` : ""}`;
 
@@ -134,7 +134,7 @@ function applyStudioStatus(status = getInitialStudioStatus()): void {
   if (urlNode) urlNode.textContent = status.urlLabel;
 }
 
-export function renderHome(): string {
+export function renderHome(theme: "light" | "dark"): string {
   const locale = getCurrentLocale();
   const cardClassName = cn(
     CAPABILITY_TILE_CLASS_NAME,
@@ -147,7 +147,7 @@ export function renderHome(): string {
     const localeButton = document.querySelector<HTMLButtonElement>(
       "[data-locale-widget]",
     );
-    widget = new WorldalityWidget({ ...WORLDALITY_CONFIG });
+    widget = new WorldalityWidget({ ...WORLDALITY_CONFIG, theme });
     if (localeButton) detachWidget = widget.attachTo(localeButton);
     applyStudioStatus(initialStudioStatus);
     intervalId = window.setInterval(() => {
@@ -188,7 +188,7 @@ export function renderHome(): string {
     t("Change language"),
   )}" class="${cardClassName}"><div class="${CAPABILITY_IMAGE_WRAPPER_CLASS_NAME}" aria-hidden="true"><img src="${widgetPreviewImage}" alt="" class="${CAPABILITY_IMAGE_CLASS_NAME}"></div><div class="${CAPABILITY_OVERLAY_CLASS_NAME}" aria-hidden="true"></div><div class="relative z-10 flex w-full flex-col items-center justify-center gap-4"><div class="${CAPABILITY_ICON_FRAME_CLASS_NAME}">${icon(
     "puzzle",
-    "text-pink-500",
+    "text-rose-500",
   )}</div><h4 class="text-white">${escapeHtml(
     WORLDALITY_WIDGET_LABEL,
   )}</h4><div class="${CAPABILITY_CTA_CLASS_NAME}">${icon(

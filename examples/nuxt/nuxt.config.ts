@@ -9,7 +9,10 @@ const currentDir = dirname(fileURLToPath(import.meta.url));
 const localePattern = getLocaleRedirectPattern();
 
 export default defineNuxtConfig({
-  modules: [worldalityStudio().nuxt()],
+  modules: ["@nuxtjs/color-mode", worldalityStudio().nuxt()],
+  colorMode: {
+    classSuffix: "",
+  },
   css: ["~/app.css"],
   devtools: {
     enabled: false,

@@ -20,8 +20,6 @@ import {
   getStudioStatusClassName,
 } from "example-shared/studio";
 import { cn } from "example-shared/ui";
-import { useTheme } from "example-shared/vue/useTheme";
-import { useWorldalityWidget } from "example-shared/vue/useWorldalityWidget";
 import {
   ArrowUpRight,
   Globe,
@@ -32,8 +30,14 @@ import {
 import { t, useCurrentLocale } from "worldality/vue";
 
 const locale = useCurrentLocale();
-const { theme } = useTheme();
-const widget = useWorldalityWidget(theme);
+const colorMode = useColorMode();
+const theme = computed<"light" | "dark">(() =>
+  colorMode.value === "dark" ? "dark" : "light",
+);
+const widget = ref<HTMLButtonElement | null>(null);
+const setWidgetButton = (node: unknown) => {
+  widget.value = node as HTMLButtonElement | null;
+};
 const studioStatus = ref(getInitialStudioStatus());
 const WORLDALITY_STUDIO_LABEL = "Worldality Studio";
 const WORLDALITY_WIDGET_LABEL = "Worldality Widget";
@@ -84,6 +88,7 @@ onUnmounted(() => {
 </script>
 
 <template>
+  <WorldalityWidgetMount :target="widget" :theme="theme" />
   <div class="grid gap-6 sm:grid-cols-2">
     <a
       href="/worldality"
@@ -151,11 +156,7 @@ onUnmounted(() => {
 
     <button
       type="button"
-      :ref="
-        (node) => {
-          widget.buttonRef.value = node as HTMLButtonElement | null;
-        }
-      "
+      :ref="setWidgetButton"
       :class="cardClassName"
       :aria-label="(locale.code, t('Change language'))"
     >
@@ -171,7 +172,7 @@ onUnmounted(() => {
         class="relative z-10 flex w-full flex-col items-center justify-center gap-4"
       >
         <div :class="CAPABILITY_ICON_FRAME_CLASS_NAME">
-          <Puzzle class="text-pink-500" aria-hidden="true" />
+          <Puzzle class="text-rose-500" aria-hidden="true" />
         </div>
         <h4 class="text-white">
           {{ WORLDALITY_WIDGET_LABEL }}

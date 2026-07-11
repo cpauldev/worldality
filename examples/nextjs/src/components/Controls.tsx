@@ -1,8 +1,10 @@
 "use client";
 
-import { useTheme } from "example-shared/react/useTheme";
+import { useEffect, useState } from "react";
+
 import { buttonVariants, cn } from "example-shared/ui";
 import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import {
   getAvailableLocales,
   setLocale,
@@ -12,7 +14,10 @@ import {
 } from "worldality/react";
 
 export function Controls() {
-  const { theme, toggle } = useTheme();
+  const { resolvedTheme: theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
   const locale = useCurrentLocale();
   const currentPage = useCurrentPage();
   const availableLocales = getAvailableLocales();
@@ -48,14 +53,14 @@ export function Controls() {
       </nav>
       <div className="rounded-xl border border-border bg-background p-1">
         <button
-          onClick={toggle}
+          onClick={toggleTheme}
           className={cn(buttonVariants({ variant: "ghost" }), "gap-2 px-3")}
           aria-label={t("Toggle theme")}
         >
-          {theme === "light" ? (
-            <Moon className="size-4" aria-hidden="true" />
-          ) : (
+          {mounted && theme === "dark" ? (
             <Sun className="size-4" aria-hidden="true" />
+          ) : (
+            <Moon className="size-4" aria-hidden="true" />
           )}
           <span>{t("Toggle theme")}</span>
         </button>

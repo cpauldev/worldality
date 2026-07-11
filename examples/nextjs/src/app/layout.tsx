@@ -8,6 +8,8 @@ import {
   loadSSRTranslations,
 } from "worldality/server/nextjs";
 
+import { Providers } from "./providers";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -30,7 +32,7 @@ export default async function RootLayout({
   const htmlAttrs = getWorldalityHtmlAttrs(worldalityData);
 
   return (
-    <html {...htmlAttrs}>
+    <html {...htmlAttrs} suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#ffffff" />
         <Script
@@ -41,7 +43,9 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

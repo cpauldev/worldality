@@ -1,4 +1,3 @@
-import { useTheme } from "example-shared/react/useTheme";
 import { buttonVariants, cn } from "example-shared/ui";
 import { Moon, Sun } from "lucide-react";
 import {
@@ -9,8 +8,10 @@ import {
   useCurrentPage,
 } from "worldality/react";
 
+import { useTheme } from "./ThemeProvider";
+
 export function Controls() {
-  const { theme, toggle } = useTheme();
+  const { theme, toggleTheme } = useTheme();
   const locale = useCurrentLocale();
   const currentPage = useCurrentPage();
   const availableLocales = getAvailableLocales();
@@ -46,7 +47,7 @@ export function Controls() {
       </nav>
       <div className="rounded-xl border border-border bg-background p-1">
         <button
-          onClick={toggle}
+          onClick={toggleTheme}
           className={cn(buttonVariants({ variant: "ghost" }), "gap-2 px-3")}
           aria-label={t("Toggle theme")}
         >

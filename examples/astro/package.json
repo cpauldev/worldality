@@ -12,7 +12,7 @@
   "dependencies": {
     "@lucide/astro": "^1.21.0",
     "example-shared": "workspace:*",
-    "worldality": "^0.2.1"
+    "worldality": "^0.2.2"
   },
   "devDependencies": {
     "@astrojs/node": "10.1.4",

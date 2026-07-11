@@ -10,16 +10,17 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
+    "@nuxtjs/color-mode": "^4.0.1",
     "example-shared": "workspace:*",
     "lucide-vue-next": "^1.0.0",
     "nuxt": "^4.4.6",
     "vue": "^3.5.38",
-    "vue-router": "^5.1.0",
-    "worldality": "^0.2.1"
+    "worldality": "^0.2.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.1",
     "@tailwindcss/vite": "^4.3.1",
+    "@types/node": "^25.9.4",
     "autoprefixer": "^10.5.0",
     "postcss": "^8.5.15",
     "typescript": "^6.0.3",

@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "example-shared": "workspace:*",
-    "worldality": "^0.2.1"
+    "worldality": "^0.2.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.1",

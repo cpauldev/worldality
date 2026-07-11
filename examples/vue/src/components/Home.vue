@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref } from "vue";
+import { computed, onMounted, onUnmounted, ref, watch } from "vue";
 
 import {
   CAPABILITY_CTA_CLASS_NAME,
@@ -20,8 +20,6 @@ import {
   getStudioStatusClassName,
 } from "example-shared/studio";
 import { cn } from "example-shared/ui";
-import { useTheme } from "example-shared/vue/useTheme";
-import { useWorldalityWidget } from "example-shared/vue/useWorldalityWidget";
 import {
   ArrowUpRight,
   Globe,
@@ -30,12 +28,34 @@ import {
   Puzzle,
 } from "lucide-vue-next";
 import { t, useCurrentLocale } from "worldality/vue";
+import { WorldalityWidget } from "worldality/widget";
+
+import { useTheme } from "../composables/useTheme";
 
 const WORLDALITY_STUDIO_LABEL = "Worldality Studio";
 const WORLDALITY_WIDGET_LABEL = "Worldality Widget";
 const locale = useCurrentLocale();
 const { theme } = useTheme();
-const widget = useWorldalityWidget(theme);
+const widget = ref<HTMLButtonElement | null>(null);
+const setWidgetButton = (node: unknown) => {
+  widget.value = node as HTMLButtonElement | null;
+};
+let worldalityWidget: WorldalityWidget | undefined;
+let detachWidget: (() => void) | undefined;
+watch(
+  theme,
+  (value) => {
+    detachWidget?.();
+    worldalityWidget?.destroy();
+    worldalityWidget = new WorldalityWidget({
+      position: "bottom-center",
+      showSettings: true,
+      theme: value,
+    });
+    if (widget.value) detachWidget = worldalityWidget.attachTo(widget.value);
+  },
+  { immediate: true },
+);
 const studioStatus = ref(getInitialStudioStatus());
 const cardClassName = cn(
   CAPABILITY_TILE_CLASS_NAME,
@@ -69,6 +89,9 @@ const syncStudioStatus = async () => {
 };
 
 onMounted(() => {
+  if (widget.value && worldalityWidget) {
+    detachWidget = worldalityWidget.attachTo(widget.value);
+  }
   void syncStudioStatus();
   studioStatusIntervalId = window.setInterval(() => {
     void syncStudioStatus();
@@ -76,6 +99,8 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
+  detachWidget?.();
+  worldalityWidget?.destroy();
   if (studioStatusIntervalId !== undefined) {
     window.clearInterval(studioStatusIntervalId);
   }
@@ -148,11 +173,7 @@ onUnmounted(() => {
 
     <button
       type="button"
-      :ref="
-        (node) => {
-          widget.buttonRef.value = node as HTMLButtonElement | null;
-        }
-      "
+      :ref="setWidgetButton"
       :class="cardClassName"
       :aria-label="(locale.code, t('Change language'))"
     >
@@ -168,7 +189,7 @@ onUnmounted(() => {
         class="relative z-10 flex w-full flex-col items-center justify-center gap-4"
       >
         <div :class="CAPABILITY_ICON_FRAME_CLASS_NAME">
-          <Puzzle class="text-pink-500" aria-hidden="true" />
+          <Puzzle class="text-rose-500" aria-hidden="true" />
         </div>
         <h4 class="text-white">{{ WORLDALITY_WIDGET_LABEL }}</h4>
         <div :class="CAPABILITY_CTA_CLASS_NAME">

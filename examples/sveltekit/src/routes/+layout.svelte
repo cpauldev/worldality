@@ -1,5 +1,8 @@
 <script lang="ts">
+  import { untrack } from "svelte";
+
   import { browser } from "$app/environment";
+  import { provideTheme } from "$lib/theme.svelte";
   import { bootstrapWorldality, enableRouting } from "worldality";
 
   import AppHeader from "../lib/AppHeader.svelte";
@@ -8,6 +11,8 @@
   import "../app.css";
 
   let { data, children } = $props();
+  const initialTheme = $derived(data.theme);
+  const theme = provideTheme(untrack(() => initialTheme));
 
   const worldalityData = $derived(data.worldalityData);
   const currentLocale = $derived(worldalityData.currentLocale);
@@ -42,6 +47,7 @@
 <div
   lang={currentLocale}
   dir={direction}
+  class:dark={theme.value === "dark"}
   class="flex min-h-screen items-start bg-background font-sans antialiased"
 >
   <div class="mx-auto w-full max-w-4xl px-4 py-16">

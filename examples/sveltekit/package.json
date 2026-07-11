@@ -13,14 +13,13 @@
   "dependencies": {
     "@lucide/svelte": "^1.21.0",
     "example-shared": "workspace:*",
-    "worldality": "^0.2.1"
+    "worldality": "^0.2.2"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^7.0.1",
     "@sveltejs/kit": "^2.66.0",
     "@sveltejs/vite-plugin-svelte": "^7.1.2",
     "@tailwindcss/postcss": "^4.3.1",
-    "@tsconfig/svelte": "^5.0.8",
     "@types/node": "^25.9.4",
     "postcss": "^8.5.15",
     "svelte": "^5.56.3",

@@ -1,4 +1,5 @@
 import {
+  createEffect,
   createMemo,
   createSignal,
   type JSX,
@@ -19,8 +20,6 @@ import {
   studioPreviewImage,
   widgetPreviewImage,
 } from "example-shared/capability-cards";
-import { useTheme } from "example-shared/solid/useTheme";
-import { useWorldalityWidget } from "example-shared/solid/useWorldalityWidget";
 import {
   fetchStudioStatus,
   getInitialStudioStatus,
@@ -35,6 +34,9 @@ import {
   Puzzle,
 } from "lucide-solid";
 import { t, useCurrentLocale } from "worldality/solid";
+import { WorldalityWidget } from "worldality/widget";
+
+import { useTheme } from "./ThemeProvider";
 
 const WORLDALITY_STUDIO_LABEL = "Worldality Studio";
 const WORLDALITY_WIDGET_LABEL = "Worldality Widget";
@@ -126,7 +128,25 @@ function CapabilityTile(props: CapabilityTileProps) {
 
 export function Home() {
   const { theme } = useTheme();
-  const { setButtonRef } = useWorldalityWidget(theme);
+  let buttonRef: HTMLButtonElement | undefined;
+  let widget: WorldalityWidget | undefined;
+  let detach: (() => void) | undefined;
+  onMount(() =>
+    createEffect(() => {
+      detach?.();
+      widget?.destroy();
+      widget = new WorldalityWidget({
+        position: "bottom-center",
+        showSettings: true,
+        theme: theme(),
+      });
+      if (buttonRef) detach = widget.attachTo(buttonRef);
+    }),
+  );
+  onCleanup(() => {
+    detach?.();
+    widget?.destroy();
+  });
   const locale = useCurrentLocale();
   const [studioStatus, setStudioStatus] = createSignal(
     getInitialStudioStatus(),
@@ -211,9 +231,11 @@ export function Home() {
 
       <CapabilityTile
         ariaLabel={locale() && t("Change language")}
-        buttonRef={setButtonRef}
+        buttonRef={(element) => {
+          buttonRef = element;
+        }}
         icon={Puzzle}
-        iconClassName="text-pink-500"
+        iconClassName="text-rose-500"
         image={widgetPreviewImage}
         title={WORLDALITY_WIDGET_LABEL}
         footer={

@@ -33,6 +33,14 @@ const direction =
     {keywords ? <meta name="keywords" content={keywords} /> : null}
     <meta name="viewport" content="width=device-width" />
     <meta name="theme-color" content="#ffffff" />
+    <script is:inline>
+      try {
+        document.documentElement.classList.toggle(
+          "dark",
+          localStorage.getItem("theme") === "dark",
+        );
+      } catch {}
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link
       rel="preload"

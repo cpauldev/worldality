@@ -1,4 +1,4 @@
-import { type ReactNode, type Ref, useEffect, useState } from "react";
+import { type ReactNode, type Ref, useEffect, useRef, useState } from "react";
 
 import {
   CAPABILITY_CTA_CLASS_NAME,
@@ -13,8 +13,6 @@ import {
   studioPreviewImage,
   widgetPreviewImage,
 } from "example-shared/capability-cards";
-import { useTheme } from "example-shared/react/useTheme";
-import { useWorldalityWidget } from "example-shared/react/useWorldalityWidget";
 import {
   fetchStudioStatus,
   getInitialStudioStatus,
@@ -30,6 +28,9 @@ import {
   Puzzle,
 } from "lucide-react";
 import { t, useCurrentLocale } from "worldality/react";
+import { WorldalityWidget } from "worldality/widget";
+
+import { useTheme } from "./ThemeProvider";
 
 const WORLDALITY_STUDIO_LABEL = "Worldality Studio";
 const WORLDALITY_WIDGET_LABEL = "Worldality Widget";
@@ -132,7 +133,21 @@ function CapabilityTile({
 
 export function Home() {
   const { theme } = useTheme();
-  const { buttonRef } = useWorldalityWidget(theme);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const widget = new WorldalityWidget({
+      position: "bottom-center",
+      showSettings: true,
+      theme,
+    });
+    const detach = buttonRef.current
+      ? widget.attachTo(buttonRef.current)
+      : undefined;
+    return () => {
+      detach?.();
+      widget.destroy();
+    };
+  }, [theme]);
   const locale = useCurrentLocale();
   const [studioStatus, setStudioStatus] = useState(getInitialStudioStatus);
 
@@ -210,7 +225,7 @@ export function Home() {
         ariaLabel={t("Change language")}
         buttonRef={buttonRef}
         icon={Puzzle}
-        iconClassName="text-pink-500"
+        iconClassName="text-rose-500"
         image={widgetPreviewImage}
         title={WORLDALITY_WIDGET_LABEL}
         footer={
