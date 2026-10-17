@@ -16,6 +16,7 @@ import { useTheme } from "../composables/useTheme";
 const { theme, toggleTheme } = useTheme();
 const locale = useCurrentLocale();
 const currentPage = useCurrentPage();
+const localeCode = computed(() => locale.value.code);
 const availableLocales = computed(() => {
   locale.value.code;
   return getAvailableLocales();
@@ -40,7 +41,7 @@ const isAboutPage = computed(() => currentPage.value === "about");
         "
         :aria-current="isAboutPage ? undefined : 'page'"
       >
-        <span>{{ (locale.code, t("Home")) }}</span>
+        <span>{{ (localeCode, t("Home")) }}</span>
       </a>
       <a
         href="/about"
@@ -54,23 +55,23 @@ const isAboutPage = computed(() => currentPage.value === "about");
         "
         :aria-current="isAboutPage ? 'page' : undefined"
       >
-        <span>{{ (locale.code, t("About")) }}</span>
+        <span>{{ (localeCode, t("About")) }}</span>
       </a>
     </nav>
     <div class="rounded-xl border border-border bg-background p-1">
       <button
         :class="cn(buttonVariants({ variant: 'ghost' }), 'gap-2 px-3')"
-        :aria-label="(locale.code, t('Toggle theme'))"
+        :aria-label="(localeCode, t('Toggle theme'))"
         @click="toggleTheme"
       >
         <Moon v-if="theme === 'light'" class="size-4" aria-hidden="true" />
         <Sun v-else class="size-4" aria-hidden="true" />
-        <span>{{ (locale.code, t("Toggle theme")) }}</span>
+        <span>{{ (localeCode, t("Toggle theme")) }}</span>
       </button>
     </div>
     <div
       class="flex flex-wrap items-center justify-center gap-1 rounded-xl border border-border bg-background p-1"
-      :aria-label="(locale.code, t('Change language'))"
+      :aria-label="(localeCode, t('Change language'))"
     >
       <button
         v-for="availableLocale in availableLocales"
@@ -80,12 +81,12 @@ const isAboutPage = computed(() => currentPage.value === "about");
           cn(
             buttonVariants({
               variant:
-                availableLocale.code === locale.code ? 'secondary' : 'ghost',
+                availableLocale.code === localeCode ? 'secondary' : 'ghost',
             }),
             'gap-2 px-3',
           )
         "
-        :aria-pressed="availableLocale.code === locale.code"
+        :aria-pressed="availableLocale.code === localeCode"
         @click="setLocale(availableLocale)"
       >
         <bdi :lang="availableLocale.code">{{ availableLocale.nativeName }}</bdi>

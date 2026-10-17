@@ -13,7 +13,7 @@
   "dependencies": {
     "@lucide/svelte": "^1.21.0",
     "example-shared": "workspace:*",
-    "worldality": "^0.2.2"
+    "worldality": "^0.2.3"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^7.0.1",

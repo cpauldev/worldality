@@ -1,7 +1,7 @@
 export const WORLDALITY_STUDIO_PATH = "/worldality";
-export const WORLDALITY_BRIDGE_STATE_PATH = "/__universa/worldality/state";
+export const WORLDALITY_BRIDGE_STATE_PATH = "/__universal/worldality/state";
 export const WORLDALITY_BRIDGE_RUNTIME_STATUS_PATH =
-  "/__universa/worldality/runtime/status";
+  "/__universal/worldality/runtime/status";
 
 export type StudioStatusTone =
   | "connected"

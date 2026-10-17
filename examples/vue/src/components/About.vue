@@ -4,6 +4,7 @@ import { computed } from "vue";
 import { getFormatter, t, useCurrentLocale } from "worldality/vue";
 
 const locale = useCurrentLocale();
+const localeCode = computed(() => locale.value.code);
 const format = computed(() => {
   locale.value.code;
   return getFormatter();
@@ -16,7 +17,7 @@ const format = computed(() => {
   >
     <p class="body-lg text-secondary-foreground">
       {{
-        (locale.code,
+        (localeCode,
         t(
           "This page shows how {brand} loads translated content across routes.",
           { brand: "Worldality" },
@@ -26,7 +27,7 @@ const format = computed(() => {
     <div class="mt-6 grid gap-3 sm:grid-cols-2">
       <div class="rounded-lg bg-background/72 px-4 py-3">
         <p class="body-sm font-medium text-muted-foreground">
-          {{ (locale.code, t("Currency")) }}
+          {{ (localeCode, t("Currency")) }}
         </p>
         <p class="mt-1 text-foreground">
           {{ format.number(1234.56, { style: "currency", currency: "USD" }) }}
@@ -34,7 +35,7 @@ const format = computed(() => {
       </div>
       <div class="rounded-lg bg-background/72 px-4 py-3">
         <p class="body-sm font-medium text-muted-foreground">
-          {{ (locale.code, t("Current time")) }}
+          {{ (localeCode, t("Current time")) }}
         </p>
         <p class="mt-1 text-foreground">
           {{ format.dateTime(new Date(), "medium") }}
@@ -42,13 +43,13 @@ const format = computed(() => {
       </div>
       <div class="rounded-lg bg-background/72 px-4 py-3">
         <p class="body-sm font-medium text-muted-foreground">
-          {{ (locale.code, t("Relative time")) }}
+          {{ (localeCode, t("Relative time")) }}
         </p>
         <p class="mt-1 text-foreground">{{ format.relativeTime(-90) }}</p>
       </div>
       <div class="rounded-lg bg-background/72 px-4 py-3">
         <p class="body-sm font-medium text-muted-foreground">
-          {{ (locale.code, t("List")) }}
+          {{ (localeCode, t("List")) }}
         </p>
         <p class="mt-1 text-foreground">
           {{

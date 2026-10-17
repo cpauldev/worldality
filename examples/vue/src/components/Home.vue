@@ -35,6 +35,9 @@ import { useTheme } from "../composables/useTheme";
 const WORLDALITY_STUDIO_LABEL = "Worldality Studio";
 const WORLDALITY_WIDGET_LABEL = "Worldality Widget";
 const locale = useCurrentLocale();
+const localeCode = computed(() => locale.value.code);
+const localeDirection = computed(() => locale.value.direction);
+const localeNativeName = computed(() => locale.value.nativeName);
 const { theme } = useTheme();
 const widget = ref<HTMLButtonElement | null>(null);
 const setWidgetButton = (node: unknown) => {
@@ -115,7 +118,7 @@ onUnmounted(() => {
       rel="noreferrer"
       :class="cardClassName"
       :aria-label="
-        (locale.code, t('Open {studio}', { studio: WORLDALITY_STUDIO_LABEL }))
+        (localeCode, t('Open {studio}', { studio: WORLDALITY_STUDIO_LABEL }))
       "
     >
       <div :class="CAPABILITY_IMAGE_WRAPPER_CLASS_NAME" aria-hidden="true">
@@ -134,10 +137,10 @@ onUnmounted(() => {
         </div>
         <h4 class="text-white">{{ WORLDALITY_STUDIO_LABEL }}</h4>
         <div :class="CAPABILITY_CTA_CLASS_NAME">
-          {{ (locale.code, t("Open {studio}", { studio: "Studio" })) }}
+          {{ (localeCode, t("Open {studio}", { studio: "Studio" })) }}
           <ArrowUpRight
             class="size-6"
-            :class="locale.direction === 'rtl' && '-scale-x-100'"
+            :class="localeDirection === 'rtl' && '-scale-x-100'"
             aria-hidden="true"
           />
         </div>
@@ -175,7 +178,7 @@ onUnmounted(() => {
       type="button"
       :ref="setWidgetButton"
       :class="cardClassName"
-      :aria-label="(locale.code, t('Change language'))"
+      :aria-label="(localeCode, t('Change language'))"
     >
       <div :class="CAPABILITY_IMAGE_WRAPPER_CLASS_NAME" aria-hidden="true">
         <img
@@ -194,14 +197,14 @@ onUnmounted(() => {
         <h4 class="text-white">{{ WORLDALITY_WIDGET_LABEL }}</h4>
         <div :class="CAPABILITY_CTA_CLASS_NAME">
           <Globe class="size-6" aria-hidden="true" />
-          <bdi class="locale-script" :lang="locale.code">
-            {{ locale.nativeName }}
+          <bdi class="locale-script" :lang="localeCode">
+            {{ localeNativeName }}
           </bdi>
         </div>
       </div>
       <div :class="CAPABILITY_FOOTER_CLASS_NAME">
         <div class="body-sm text-center font-medium text-white/72">
-          {{ (locale.code, t("Change language")) }}
+          {{ (localeCode, t("Change language")) }}
         </div>
       </div>
     </button>

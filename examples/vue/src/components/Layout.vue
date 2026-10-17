@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from "vue";
+
 import { useCurrentLocale } from "worldality/vue";
 
 import { provideTheme } from "../composables/useTheme";
@@ -6,12 +8,13 @@ import Controls from "./Controls.vue";
 import Header from "./Header.vue";
 
 const locale = useCurrentLocale();
+const localeDirection = computed(() => locale.value.direction);
 provideTheme();
 </script>
 
 <template>
   <div
-    :dir="locale.direction"
+    :dir="localeDirection"
     class="flex min-h-screen items-start bg-background font-sans antialiased"
   >
     <div class="mx-auto w-full max-w-4xl px-4 py-16">
