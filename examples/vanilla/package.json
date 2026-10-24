@@ -11,12 +11,12 @@
   },
   "dependencies": {
     "example-shared": "workspace:*",
-    "worldality": "^0.2.3"
+    "worldality": "^0.2.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.1",
     "autoprefixer": "^10.5.0",
     "postcss": "^8.5.15",
-    "vite": "^8.0.16"
+    "vite": "^8.1.6"
   }
 }

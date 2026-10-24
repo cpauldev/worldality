@@ -12,13 +12,14 @@
   "dependencies": {
     "@lucide/astro": "^1.21.0",
     "example-shared": "workspace:*",
-    "worldality": "^0.2.3"
+    "worldality": "^0.2.5"
   },
   "devDependencies": {
-    "@astrojs/node": "10.1.4",
+    "@astrojs/node": "^11.1.9",
     "@tailwindcss/postcss": "^4.3.1",
-    "astro": "^6.4.8",
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "astro": "^7.4.1",
     "postcss": "^8.5.15",
-    "typescript": "^6.0.3"
+    "typescript": "~6.0.3"
   }
 }

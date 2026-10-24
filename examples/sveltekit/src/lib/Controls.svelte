@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { useTheme } from "$lib/theme.svelte";
   import { Moon, Sun } from "@lucide/svelte";
   import { buttonVariants, cn } from "example-shared/ui";
   import {
@@ -10,6 +9,8 @@
     setLocale,
     t,
   } from "worldality/svelte";
+
+  import { useTheme } from "#lib/theme.svelte.ts";
 
   const theme = useTheme();
   const availableLocales = $derived(

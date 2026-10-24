@@ -1,14 +1,15 @@
 <script lang="ts">
   import { untrack } from "svelte";
 
-  import { browser } from "$app/environment";
-  import { provideTheme } from "$lib/theme.svelte";
+  import { browser } from "$app/env";
   import { bootstrapWorldality, enableRouting } from "worldality";
 
   import AppHeader from "../lib/AppHeader.svelte";
   import Controls from "../lib/Controls.svelte";
 
   import "../app.css";
+
+  import { provideTheme } from "#lib/theme.svelte.ts";
 
   let { data, children } = $props();
   const initialTheme = $derived(data.theme);

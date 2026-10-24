@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
+import { Moon, Sun } from "@lucide/vue";
 import { buttonVariants, cn } from "example-shared/ui";
-import { Moon, Sun } from "lucide-vue-next";
 import {
   getAvailableLocales,
   getLocalizedUrl,

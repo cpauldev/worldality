@@ -30,6 +30,9 @@ This repository is the public home for runnable Worldality examples and support 
 
 ## Install
 
+Use Bun 1.4.3. Versions before 1.4.1 cannot correctly install the TypeScript 7
+compiler alongside the TypeScript 6 compatibility API used by framework tooling.
+
 ```bash
 bun install
 ```

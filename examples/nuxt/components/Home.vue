@@ -2,6 +2,13 @@
 import { computed, onMounted, onUnmounted, ref } from "vue";
 
 import {
+  ArrowUpRight,
+  Globe,
+  LoaderCircle,
+  Monitor,
+  Puzzle,
+} from "@lucide/vue";
+import {
   CAPABILITY_CTA_CLASS_NAME,
   CAPABILITY_FOOTER_CLASS_NAME,
   CAPABILITY_ICON_FRAME_CLASS_NAME,
@@ -20,13 +27,6 @@ import {
   getStudioStatusClassName,
 } from "example-shared/studio";
 import { cn } from "example-shared/ui";
-import {
-  ArrowUpRight,
-  Globe,
-  LoaderCircle,
-  Monitor,
-  Puzzle,
-} from "lucide-vue-next";
 import { t, useCurrentLocale } from "worldality/vue";
 
 const locale = useCurrentLocale();

@@ -1,8 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import { useTheme } from "$lib/theme.svelte";
-  import { createWidget } from "$lib/widget.svelte";
   import {
     ArrowUpRight,
     Globe,
@@ -30,6 +28,9 @@
   } from "example-shared/studio";
   import { cn } from "example-shared/ui";
   import { currentLocale, t } from "worldality/svelte";
+
+  import { useTheme } from "#lib/theme.svelte.ts";
+  import { createWidget } from "#lib/widget.svelte.ts";
 
   const theme = useTheme();
   const widget = createWidget(() => theme.value);
@@ -129,7 +130,7 @@
     </div>
     <div class={CAPABILITY_FOOTER_CLASS_NAME}>
       <div
-        class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center body-sm"
+        class="body-sm flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center"
       >
         <span
           class={cn("font-medium", getStudioStatusClassName(studioStatus.tone))}
@@ -183,7 +184,7 @@
       </div>
     </div>
     <div class={CAPABILITY_FOOTER_CLASS_NAME}>
-      <div class="text-center body-sm font-medium text-white/72">
+      <div class="body-sm text-center font-medium text-white/72">
         {t("Change language")}
       </div>
     </div>

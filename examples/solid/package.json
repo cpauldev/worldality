@@ -13,13 +13,14 @@
     "example-shared": "workspace:*",
     "lucide-solid": "^1.21.0",
     "solid-js": "^1.9.13",
-    "worldality": "^0.2.3"
+    "worldality": "^0.2.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.1",
+    "@typescript/native": "npm:typescript@^7.0.2",
     "postcss": "^8.5.15",
-    "typescript": "^6.0.3",
-    "vite": "^8.0.16",
+    "typescript": "~6.0.3",
+    "vite": "^8.1.6",
     "vite-plugin-solid": "^2.11.12"
   }
 }
